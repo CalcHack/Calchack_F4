@@ -1,0 +1,5375 @@
+	.syntax unified
+	.cpu cortex-m4
+	.fpu softvfp
+	.eabi_attribute 20, 1
+	.eabi_attribute 21, 1
+	.eabi_attribute 23, 3
+	.eabi_attribute 24, 1
+	.eabi_attribute 25, 1
+	.eabi_attribute 26, 1
+	.eabi_attribute 30, 6
+	.eabi_attribute 34, 1
+	.eabi_attribute 18, 4
+	.thumb
+	.file	"stm32f4xx_adc.c"
+	.text
+.Ltext0:
+	.section	.text.ADC_DeInit,"ax",%progbits
+	.align	2
+	.global	ADC_DeInit
+	.thumb
+	.thumb_func
+	.type	ADC_DeInit, %function
+ADC_DeInit:
+.LFB112:
+	.file 1 "/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_adc.c"
+	.loc 1 214 0
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 1, uses_anonymous_args = 0
+	push	{r7, lr}
+.LCFI0:
+	add	r7, sp, #0
+.LCFI1:
+	.loc 1 216 0
+	mov	r0, #256
+	movs	r1, #1
+	bl	RCC_APB2PeriphResetCmd
+	.loc 1 219 0
+	mov	r0, #256
+	movs	r1, #0
+	bl	RCC_APB2PeriphResetCmd
+	.loc 1 220 0
+	pop	{r7, pc}
+.LFE112:
+	.size	ADC_DeInit, .-ADC_DeInit
+	.section	.text.ADC_Init,"ax",%progbits
+	.align	2
+	.global	ADC_Init
+	.thumb
+	.thumb_func
+	.type	ADC_Init, %function
+ADC_Init:
+.LFB113:
+	.loc 1 236 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI2:
+	sub	sp, sp, #20
+.LCFI3:
+	add	r7, sp, #0
+.LCFI4:
+	str	r0, [r7, #4]
+	str	r1, [r7]
+	.loc 1 237 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 238 0
+	movs	r3, #0
+	strb	r3, [r7, #11]
+	.loc 1 251 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	str	r3, [r7, #12]
+	.loc 1 254 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #50331648
+	bic	r3, r3, #256
+	str	r3, [r7, #12]
+	.loc 1 259 0
+	ldr	r3, [r7]
+	ldrb	r3, [r3, #4]	@ zero_extendqisi2
+	lsls	r2, r3, #8
+	.loc 1 260 0
+	ldr	r3, [r7]
+	ldr	r3, [r3]
+	.loc 1 259 0
+	orrs	r3, r3, r2
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 262 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #4]
+	.loc 1 265 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	str	r3, [r7, #12]
+	.loc 1 268 0
+	ldr	r2, [r7, #12]
+	ldr	r3, .L3
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 276 0
+	ldr	r3, [r7]
+	ldr	r2, [r3, #16]
+	.loc 1 277 0
+	ldr	r3, [r7]
+	ldr	r3, [r3, #12]
+	.loc 1 276 0
+	orrs	r2, r2, r3
+	.loc 1 278 0
+	ldr	r3, [r7]
+	ldr	r3, [r3, #8]
+	.loc 1 277 0
+	orrs	r2, r2, r3
+	.loc 1 279 0
+	ldr	r3, [r7]
+	ldrb	r3, [r3, #5]	@ zero_extendqisi2
+	lsls	r3, r3, #1
+	.loc 1 276 0
+	orrs	r3, r3, r2
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 282 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #8]
+	.loc 1 285 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #44]
+	str	r3, [r7, #12]
+	.loc 1 288 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #15728640
+	str	r3, [r7, #12]
+	.loc 1 292 0
+	ldr	r3, [r7]
+	ldrb	r3, [r3, #20]	@ zero_extendqisi2
+	subs	r3, r3, #1
+	uxtb	r2, r3
+	ldrb	r3, [r7, #11]
+	orrs	r3, r3, r2
+	strb	r3, [r7, #11]
+	.loc 1 293 0
+	ldrb	r3, [r7, #11]	@ zero_extendqisi2
+	lsls	r3, r3, #20
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 296 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #44]
+	.loc 1 297 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L4:
+	.align	2
+.L3:
+	.word	-1056966659
+.LFE113:
+	.size	ADC_Init, .-ADC_Init
+	.section	.text.ADC_StructInit,"ax",%progbits
+	.align	2
+	.global	ADC_StructInit
+	.thumb
+	.thumb_func
+	.type	ADC_StructInit, %function
+ADC_StructInit:
+.LFB114:
+	.loc 1 311 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI5:
+	sub	sp, sp, #12
+.LCFI6:
+	add	r7, sp, #0
+.LCFI7:
+	str	r0, [r7, #4]
+	.loc 1 313 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3]
+	.loc 1 316 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	strb	r2, [r3, #4]
+	.loc 1 319 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	strb	r2, [r3, #5]
+	.loc 1 322 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #8]
+	.loc 1 325 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #12]
+	.loc 1 328 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #16]
+	.loc 1 331 0
+	ldr	r3, [r7, #4]
+	movs	r2, #1
+	strb	r2, [r3, #20]
+	.loc 1 332 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE114:
+	.size	ADC_StructInit, .-ADC_StructInit
+	.section	.text.ADC_CommonInit,"ax",%progbits
+	.align	2
+	.global	ADC_CommonInit
+	.thumb
+	.thumb_func
+	.type	ADC_CommonInit, %function
+ADC_CommonInit:
+.LFB115:
+	.loc 1 342 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI8:
+	sub	sp, sp, #20
+.LCFI9:
+	add	r7, sp, #0
+.LCFI10:
+	str	r0, [r7, #4]
+	.loc 1 343 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 351 0
+	ldr	r3, .L7
+	ldr	r3, [r3, #4]
+	str	r3, [r7, #12]
+	.loc 1 354 0
+	ldr	r2, [r7, #12]
+	ldr	r3, .L7+4
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 362 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3]
+	.loc 1 363 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	.loc 1 362 0
+	orrs	r2, r2, r3
+	.loc 1 364 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	.loc 1 363 0
+	orrs	r2, r2, r3
+	.loc 1 365 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #12]
+	.loc 1 362 0
+	orrs	r3, r3, r2
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 368 0
+	ldr	r3, .L7
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #4]
+	.loc 1 369 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L8:
+	.align	2
+.L7:
+	.word	1073816320
+	.word	-249632
+.LFE115:
+	.size	ADC_CommonInit, .-ADC_CommonInit
+	.section	.text.ADC_CommonStructInit,"ax",%progbits
+	.align	2
+	.global	ADC_CommonStructInit
+	.thumb
+	.thumb_func
+	.type	ADC_CommonStructInit, %function
+ADC_CommonStructInit:
+.LFB116:
+	.loc 1 378 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI11:
+	sub	sp, sp, #12
+.LCFI12:
+	add	r7, sp, #0
+.LCFI13:
+	str	r0, [r7, #4]
+	.loc 1 380 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3]
+	.loc 1 383 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #4]
+	.loc 1 386 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #8]
+	.loc 1 389 0
+	ldr	r3, [r7, #4]
+	movs	r2, #0
+	str	r2, [r3, #12]
+	.loc 1 390 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE116:
+	.size	ADC_CommonStructInit, .-ADC_CommonStructInit
+	.section	.text.ADC_Cmd,"ax",%progbits
+	.align	2
+	.global	ADC_Cmd
+	.thumb
+	.thumb_func
+	.type	ADC_Cmd, %function
+ADC_Cmd:
+.LFB117:
+	.loc 1 400 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI14:
+	sub	sp, sp, #12
+.LCFI15:
+	add	r7, sp, #0
+.LCFI16:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 404 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L11
+	.loc 1 407 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #1
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	b	.L10
+.L11:
+	.loc 1 412 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	bic	r2, r3, #1
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+.L10:
+	.loc 1 414 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE117:
+	.size	ADC_Cmd, .-ADC_Cmd
+	.section	.text.ADC_AnalogWatchdogCmd,"ax",%progbits
+	.align	2
+	.global	ADC_AnalogWatchdogCmd
+	.thumb
+	.thumb_func
+	.type	ADC_AnalogWatchdogCmd, %function
+ADC_AnalogWatchdogCmd:
+.LFB118:
+	.loc 1 456 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI17:
+	sub	sp, sp, #20
+.LCFI18:
+	add	r7, sp, #0
+.LCFI19:
+	str	r0, [r7, #4]
+	str	r1, [r7]
+	.loc 1 457 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 463 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	str	r3, [r7, #12]
+	.loc 1 466 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #12582912
+	bic	r3, r3, #512
+	str	r3, [r7, #12]
+	.loc 1 469 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 472 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #4]
+	.loc 1 473 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE118:
+	.size	ADC_AnalogWatchdogCmd, .-ADC_AnalogWatchdogCmd
+	.section	.text.ADC_AnalogWatchdogThresholdsConfig,"ax",%progbits
+	.align	2
+	.global	ADC_AnalogWatchdogThresholdsConfig
+	.thumb
+	.thumb_func
+	.type	ADC_AnalogWatchdogThresholdsConfig, %function
+ADC_AnalogWatchdogThresholdsConfig:
+.LFB119:
+	.loc 1 486 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI20:
+	sub	sp, sp, #12
+.LCFI21:
+	add	r7, sp, #0
+.LCFI22:
+	str	r0, [r7, #4]
+	mov	r3, r2
+	mov	r2, r1	@ movhi
+	strh	r2, [r7, #2]	@ movhi
+	strh	r3, [r7]	@ movhi
+	.loc 1 493 0
+	ldrh	r2, [r7, #2]
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #36]
+	.loc 1 496 0
+	ldrh	r2, [r7]
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #40]
+	.loc 1 497 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE119:
+	.size	ADC_AnalogWatchdogThresholdsConfig, .-ADC_AnalogWatchdogThresholdsConfig
+	.section	.text.ADC_AnalogWatchdogSingleChannelConfig,"ax",%progbits
+	.align	2
+	.global	ADC_AnalogWatchdogSingleChannelConfig
+	.thumb
+	.thumb_func
+	.type	ADC_AnalogWatchdogSingleChannelConfig, %function
+ADC_AnalogWatchdogSingleChannelConfig:
+.LFB120:
+	.loc 1 526 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI23:
+	sub	sp, sp, #20
+.LCFI24:
+	add	r7, sp, #0
+.LCFI25:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 527 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 533 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	str	r3, [r7, #12]
+	.loc 1 536 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #31
+	str	r3, [r7, #12]
+	.loc 1 539 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 542 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #4]
+	.loc 1 543 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE120:
+	.size	ADC_AnalogWatchdogSingleChannelConfig, .-ADC_AnalogWatchdogSingleChannelConfig
+	.section	.text.ADC_TempSensorVrefintCmd,"ax",%progbits
+	.align	2
+	.global	ADC_TempSensorVrefintCmd
+	.thumb
+	.thumb_func
+	.type	ADC_TempSensorVrefintCmd, %function
+ADC_TempSensorVrefintCmd:
+.LFB121:
+	.loc 1 590 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI26:
+	sub	sp, sp, #12
+.LCFI27:
+	add	r7, sp, #0
+.LCFI28:
+	mov	r3, r0
+	strb	r3, [r7, #7]
+	.loc 1 593 0
+	ldrb	r3, [r7, #7]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L17
+	.loc 1 596 0
+	ldr	r3, .L19
+	ldr	r2, .L19
+	ldr	r2, [r2, #4]
+	orr	r2, r2, #8388608
+	str	r2, [r3, #4]
+	b	.L16
+.L17:
+	.loc 1 601 0
+	ldr	r3, .L19
+	ldr	r2, .L19
+	ldr	r2, [r2, #4]
+	bic	r2, r2, #8388608
+	str	r2, [r3, #4]
+.L16:
+	.loc 1 603 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L20:
+	.align	2
+.L19:
+	.word	1073816320
+.LFE121:
+	.size	ADC_TempSensorVrefintCmd, .-ADC_TempSensorVrefintCmd
+	.section	.text.ADC_VBATCmd,"ax",%progbits
+	.align	2
+	.global	ADC_VBATCmd
+	.thumb
+	.thumb_func
+	.type	ADC_VBATCmd, %function
+ADC_VBATCmd:
+.LFB122:
+	.loc 1 616 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI29:
+	sub	sp, sp, #12
+.LCFI30:
+	add	r7, sp, #0
+.LCFI31:
+	mov	r3, r0
+	strb	r3, [r7, #7]
+	.loc 1 619 0
+	ldrb	r3, [r7, #7]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L22
+	.loc 1 622 0
+	ldr	r3, .L24
+	ldr	r2, .L24
+	ldr	r2, [r2, #4]
+	orr	r2, r2, #4194304
+	str	r2, [r3, #4]
+	b	.L21
+.L22:
+	.loc 1 627 0
+	ldr	r3, .L24
+	ldr	r2, .L24
+	ldr	r2, [r2, #4]
+	bic	r2, r2, #4194304
+	str	r2, [r3, #4]
+.L21:
+	.loc 1 629 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L25:
+	.align	2
+.L24:
+	.word	1073816320
+.LFE122:
+	.size	ADC_VBATCmd, .-ADC_VBATCmd
+	.section	.text.ADC_RegularChannelConfig,"ax",%progbits
+	.align	2
+	.global	ADC_RegularChannelConfig
+	.thumb
+	.thumb_func
+	.type	ADC_RegularChannelConfig, %function
+ADC_RegularChannelConfig:
+.LFB123:
+	.loc 1 716 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI32:
+	sub	sp, sp, #20
+.LCFI33:
+	add	r7, sp, #0
+.LCFI34:
+	str	r0, [r7, #4]
+	strb	r1, [r7, #3]
+	strb	r2, [r7, #2]
+	strb	r3, [r7, #1]
+	.loc 1 717 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	movs	r3, #0
+	str	r3, [r7, #8]
+	.loc 1 725 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #9
+	bls	.L27
+	.loc 1 728 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #12]
+	str	r3, [r7, #12]
+	.loc 1 731 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	sub	r2, r3, #10
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	movs	r2, #7
+	lsl	r3, r2, r3
+	str	r3, [r7, #8]
+	.loc 1 734 0
+	ldr	r3, [r7, #8]
+	mvns	r3, r3
+	ldr	r2, [r7, #12]
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 737 0
+	ldrb	r1, [r7, #1]	@ zero_extendqisi2
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	sub	r2, r3, #10
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #8]
+	.loc 1 740 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7, #8]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 743 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #12]
+	b	.L28
+.L27:
+	.loc 1 748 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #16]
+	str	r3, [r7, #12]
+	.loc 1 751 0
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	movs	r2, #7
+	lsl	r3, r2, r3
+	str	r3, [r7, #8]
+	.loc 1 754 0
+	ldr	r3, [r7, #8]
+	mvns	r3, r3
+	ldr	r2, [r7, #12]
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 757 0
+	ldrb	r1, [r7, #1]	@ zero_extendqisi2
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #8]
+	.loc 1 760 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7, #8]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 763 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #16]
+.L28:
+	.loc 1 766 0
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	cmp	r3, #6
+	bhi	.L29
+	.loc 1 769 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #52]
+	str	r3, [r7, #12]
+	.loc 1 772 0
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	subs	r2, r3, #1
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	movs	r2, #31
+	lsl	r3, r2, r3
+	str	r3, [r7, #8]
+	.loc 1 775 0
+	ldr	r3, [r7, #8]
+	mvns	r3, r3
+	ldr	r2, [r7, #12]
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 778 0
+	ldrb	r1, [r7, #3]	@ zero_extendqisi2
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	subs	r2, r3, #1
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #8]
+	.loc 1 781 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7, #8]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 784 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #52]
+	b	.L26
+.L29:
+	.loc 1 787 0
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	cmp	r3, #12
+	bhi	.L31
+	.loc 1 790 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #48]
+	str	r3, [r7, #12]
+	.loc 1 793 0
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	subs	r2, r3, #7
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	movs	r2, #31
+	lsl	r3, r2, r3
+	str	r3, [r7, #8]
+	.loc 1 796 0
+	ldr	r3, [r7, #8]
+	mvns	r3, r3
+	ldr	r2, [r7, #12]
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 799 0
+	ldrb	r1, [r7, #3]	@ zero_extendqisi2
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	subs	r2, r3, #7
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #8]
+	.loc 1 802 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7, #8]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 805 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #48]
+	b	.L26
+.L31:
+	.loc 1 811 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #44]
+	str	r3, [r7, #12]
+	.loc 1 814 0
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	sub	r2, r3, #13
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	movs	r2, #31
+	lsl	r3, r2, r3
+	str	r3, [r7, #8]
+	.loc 1 817 0
+	ldr	r3, [r7, #8]
+	mvns	r3, r3
+	ldr	r2, [r7, #12]
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 820 0
+	ldrb	r1, [r7, #3]	@ zero_extendqisi2
+	ldrb	r3, [r7, #2]	@ zero_extendqisi2
+	sub	r2, r3, #13
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #8]
+	.loc 1 823 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7, #8]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 826 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #44]
+.L26:
+	.loc 1 828 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE123:
+	.size	ADC_RegularChannelConfig, .-ADC_RegularChannelConfig
+	.section	.text.ADC_SoftwareStartConv,"ax",%progbits
+	.align	2
+	.global	ADC_SoftwareStartConv
+	.thumb
+	.thumb_func
+	.type	ADC_SoftwareStartConv, %function
+ADC_SoftwareStartConv:
+.LFB124:
+	.loc 1 836 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI35:
+	sub	sp, sp, #12
+.LCFI36:
+	add	r7, sp, #0
+.LCFI37:
+	str	r0, [r7, #4]
+	.loc 1 841 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #1073741824
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	.loc 1 842 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE124:
+	.size	ADC_SoftwareStartConv, .-ADC_SoftwareStartConv
+	.section	.text.ADC_GetSoftwareStartConvStatus,"ax",%progbits
+	.align	2
+	.global	ADC_GetSoftwareStartConvStatus
+	.thumb
+	.thumb_func
+	.type	ADC_GetSoftwareStartConvStatus, %function
+ADC_GetSoftwareStartConvStatus:
+.LFB125:
+	.loc 1 850 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI38:
+	sub	sp, sp, #20
+.LCFI39:
+	add	r7, sp, #0
+.LCFI40:
+	str	r0, [r7, #4]
+	.loc 1 851 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+	.loc 1 856 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	and	r3, r3, #1073741824
+	cmp	r3, #0
+	beq	.L34
+	.loc 1 859 0
+	movs	r3, #1
+	strb	r3, [r7, #15]
+	b	.L35
+.L34:
+	.loc 1 864 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+.L35:
+	.loc 1 868 0
+	ldrb	r3, [r7, #15]	@ zero_extendqisi2
+	.loc 1 869 0
+	mov	r0, r3
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE125:
+	.size	ADC_GetSoftwareStartConvStatus, .-ADC_GetSoftwareStartConvStatus
+	.section	.text.ADC_EOCOnEachRegularChannelCmd,"ax",%progbits
+	.align	2
+	.global	ADC_EOCOnEachRegularChannelCmd
+	.thumb
+	.thumb_func
+	.type	ADC_EOCOnEachRegularChannelCmd, %function
+ADC_EOCOnEachRegularChannelCmd:
+.LFB126:
+	.loc 1 880 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI41:
+	sub	sp, sp, #12
+.LCFI42:
+	add	r7, sp, #0
+.LCFI43:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 885 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L38
+	.loc 1 888 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #1024
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	b	.L37
+.L38:
+	.loc 1 893 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	bic	r2, r3, #1024
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+.L37:
+	.loc 1 895 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE126:
+	.size	ADC_EOCOnEachRegularChannelCmd, .-ADC_EOCOnEachRegularChannelCmd
+	.section	.text.ADC_ContinuousModeCmd,"ax",%progbits
+	.align	2
+	.global	ADC_ContinuousModeCmd
+	.thumb
+	.thumb_func
+	.type	ADC_ContinuousModeCmd, %function
+ADC_ContinuousModeCmd:
+.LFB127:
+	.loc 1 905 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI44:
+	sub	sp, sp, #12
+.LCFI45:
+	add	r7, sp, #0
+.LCFI46:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 910 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L41
+	.loc 1 913 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #2
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	b	.L40
+.L41:
+	.loc 1 918 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	bic	r2, r3, #2
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+.L40:
+	.loc 1 920 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE127:
+	.size	ADC_ContinuousModeCmd, .-ADC_ContinuousModeCmd
+	.section	.text.ADC_DiscModeChannelCountConfig,"ax",%progbits
+	.align	2
+	.global	ADC_DiscModeChannelCountConfig
+	.thumb
+	.thumb_func
+	.type	ADC_DiscModeChannelCountConfig, %function
+ADC_DiscModeChannelCountConfig:
+.LFB128:
+	.loc 1 931 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI47:
+	sub	sp, sp, #20
+.LCFI48:
+	add	r7, sp, #0
+.LCFI49:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 932 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 933 0
+	movs	r3, #0
+	str	r3, [r7, #8]
+	.loc 1 940 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	str	r3, [r7, #12]
+	.loc 1 943 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #57344
+	str	r3, [r7, #12]
+	.loc 1 946 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	subs	r3, r3, #1
+	str	r3, [r7, #8]
+	.loc 1 947 0
+	ldr	r3, [r7, #8]
+	lsls	r3, r3, #13
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 950 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #4]
+	.loc 1 951 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE128:
+	.size	ADC_DiscModeChannelCountConfig, .-ADC_DiscModeChannelCountConfig
+	.section	.text.ADC_DiscModeCmd,"ax",%progbits
+	.align	2
+	.global	ADC_DiscModeCmd
+	.thumb
+	.thumb_func
+	.type	ADC_DiscModeCmd, %function
+ADC_DiscModeCmd:
+.LFB129:
+	.loc 1 963 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI50:
+	sub	sp, sp, #12
+.LCFI51:
+	add	r7, sp, #0
+.LCFI52:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 968 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L45
+	.loc 1 971 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	orr	r2, r3, #2048
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+	b	.L44
+.L45:
+	.loc 1 976 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	bic	r2, r3, #2048
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+.L44:
+	.loc 1 978 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE129:
+	.size	ADC_DiscModeCmd, .-ADC_DiscModeCmd
+	.section	.text.ADC_GetConversionValue,"ax",%progbits
+	.align	2
+	.global	ADC_GetConversionValue
+	.thumb
+	.thumb_func
+	.type	ADC_GetConversionValue, %function
+ADC_GetConversionValue:
+.LFB130:
+	.loc 1 986 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI53:
+	sub	sp, sp, #12
+.LCFI54:
+	add	r7, sp, #0
+.LCFI55:
+	str	r0, [r7, #4]
+	.loc 1 991 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #76]
+	uxth	r3, r3
+	.loc 1 992 0
+	mov	r0, r3
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE130:
+	.size	ADC_GetConversionValue, .-ADC_GetConversionValue
+	.section	.text.ADC_GetMultiModeConversionValue,"ax",%progbits
+	.align	2
+	.global	ADC_GetMultiModeConversionValue
+	.thumb
+	.thumb_func
+	.type	ADC_GetMultiModeConversionValue, %function
+ADC_GetMultiModeConversionValue:
+.LFB131:
+	.loc 1 1007 0
+	@ args = 0, pretend = 0, frame = 0
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI56:
+	add	r7, sp, #0
+.LCFI57:
+	.loc 1 1009 0
+	ldr	r3, .L51
+	ldr	r3, [r3]
+	.loc 1 1010 0
+	mov	r0, r3
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L52:
+	.align	2
+.L51:
+	.word	1073816328
+.LFE131:
+	.size	ADC_GetMultiModeConversionValue, .-ADC_GetMultiModeConversionValue
+	.section	.text.ADC_DMACmd,"ax",%progbits
+	.align	2
+	.global	ADC_DMACmd
+	.thumb
+	.thumb_func
+	.type	ADC_DMACmd, %function
+ADC_DMACmd:
+.LFB132:
+	.loc 1 1053 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI58:
+	sub	sp, sp, #12
+.LCFI59:
+	add	r7, sp, #0
+.LCFI60:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1057 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L54
+	.loc 1 1060 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #256
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	b	.L53
+.L54:
+	.loc 1 1065 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	bic	r2, r3, #256
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+.L53:
+	.loc 1 1067 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE132:
+	.size	ADC_DMACmd, .-ADC_DMACmd
+	.section	.text.ADC_DMARequestAfterLastTransferCmd,"ax",%progbits
+	.align	2
+	.global	ADC_DMARequestAfterLastTransferCmd
+	.thumb
+	.thumb_func
+	.type	ADC_DMARequestAfterLastTransferCmd, %function
+ADC_DMARequestAfterLastTransferCmd:
+.LFB133:
+	.loc 1 1077 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI61:
+	sub	sp, sp, #12
+.LCFI62:
+	add	r7, sp, #0
+.LCFI63:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1081 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L57
+	.loc 1 1084 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #512
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	b	.L56
+.L57:
+	.loc 1 1089 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	bic	r2, r3, #512
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+.L56:
+	.loc 1 1091 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE133:
+	.size	ADC_DMARequestAfterLastTransferCmd, .-ADC_DMARequestAfterLastTransferCmd
+	.section	.text.ADC_MultiModeDMARequestAfterLastTransferCmd,"ax",%progbits
+	.align	2
+	.global	ADC_MultiModeDMARequestAfterLastTransferCmd
+	.thumb
+	.thumb_func
+	.type	ADC_MultiModeDMARequestAfterLastTransferCmd, %function
+ADC_MultiModeDMARequestAfterLastTransferCmd:
+.LFB134:
+	.loc 1 1104 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI64:
+	sub	sp, sp, #12
+.LCFI65:
+	add	r7, sp, #0
+.LCFI66:
+	mov	r3, r0
+	strb	r3, [r7, #7]
+	.loc 1 1107 0
+	ldrb	r3, [r7, #7]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L60
+	.loc 1 1110 0
+	ldr	r3, .L62
+	ldr	r2, .L62
+	ldr	r2, [r2, #4]
+	orr	r2, r2, #8192
+	str	r2, [r3, #4]
+	b	.L59
+.L60:
+	.loc 1 1115 0
+	ldr	r3, .L62
+	ldr	r2, .L62
+	ldr	r2, [r2, #4]
+	bic	r2, r2, #8192
+	str	r2, [r3, #4]
+.L59:
+	.loc 1 1117 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.L63:
+	.align	2
+.L62:
+	.word	1073816320
+.LFE134:
+	.size	ADC_MultiModeDMARequestAfterLastTransferCmd, .-ADC_MultiModeDMARequestAfterLastTransferCmd
+	.section	.text.ADC_InjectedChannelConfig,"ax",%progbits
+	.align	2
+	.global	ADC_InjectedChannelConfig
+	.thumb
+	.thumb_func
+	.type	ADC_InjectedChannelConfig, %function
+ADC_InjectedChannelConfig:
+.LFB135:
+	.loc 1 1191 0
+	@ args = 0, pretend = 0, frame = 24
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI67:
+	sub	sp, sp, #28
+.LCFI68:
+	add	r7, sp, #0
+.LCFI69:
+	str	r0, [r7, #4]
+	strb	r1, [r7, #3]
+	strb	r2, [r7, #2]
+	strb	r3, [r7, #1]
+	.loc 1 1192 0
+	movs	r3, #0
+	str	r3, [r7, #20]
+	movs	r3, #0
+	str	r3, [r7, #16]
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1199 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #9
+	bls	.L65
+	.loc 1 1202 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #12]
+	str	r3, [r7, #20]
+	.loc 1 1204 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	sub	r2, r3, #10
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	movs	r2, #7
+	lsl	r3, r2, r3
+	str	r3, [r7, #16]
+	.loc 1 1206 0
+	ldr	r3, [r7, #16]
+	mvns	r3, r3
+	ldr	r2, [r7, #20]
+	ands	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1208 0
+	ldrb	r1, [r7, #1]	@ zero_extendqisi2
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	sub	r2, r3, #10
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #16]
+	.loc 1 1210 0
+	ldr	r2, [r7, #20]
+	ldr	r3, [r7, #16]
+	orrs	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1212 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #20]
+	str	r2, [r3, #12]
+	b	.L66
+.L65:
+	.loc 1 1217 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #16]
+	str	r3, [r7, #20]
+	.loc 1 1219 0
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	movs	r2, #7
+	lsl	r3, r2, r3
+	str	r3, [r7, #16]
+	.loc 1 1221 0
+	ldr	r3, [r7, #16]
+	mvns	r3, r3
+	ldr	r2, [r7, #20]
+	ands	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1223 0
+	ldrb	r1, [r7, #1]	@ zero_extendqisi2
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	mov	r3, r2
+	lsls	r3, r3, #1
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #16]
+	.loc 1 1225 0
+	ldr	r2, [r7, #20]
+	ldr	r3, [r7, #16]
+	orrs	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1227 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #20]
+	str	r2, [r3, #16]
+.L66:
+	.loc 1 1231 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #56]
+	str	r3, [r7, #20]
+	.loc 1 1233 0
+	ldr	r3, [r7, #20]
+	and	r3, r3, #3145728
+	lsrs	r3, r3, #20
+	str	r3, [r7, #12]
+	.loc 1 1235 0
+	ldr	r3, [r7, #12]
+	uxtb	r3, r3
+	ldrb	r2, [r7, #2]
+	subs	r3, r2, r3
+	uxtb	r3, r3
+	adds	r3, r3, #2
+	uxtb	r3, r3
+	mov	r2, r3
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	movs	r2, #31
+	lsl	r3, r2, r3
+	str	r3, [r7, #16]
+	.loc 1 1237 0
+	ldr	r3, [r7, #16]
+	mvns	r3, r3
+	ldr	r2, [r7, #20]
+	ands	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1239 0
+	ldrb	r1, [r7, #3]	@ zero_extendqisi2
+	ldr	r3, [r7, #12]
+	uxtb	r3, r3
+	ldrb	r2, [r7, #2]
+	subs	r3, r2, r3
+	uxtb	r3, r3
+	adds	r3, r3, #2
+	uxtb	r3, r3
+	mov	r2, r3
+	mov	r3, r2
+	lsls	r3, r3, #2
+	add	r3, r3, r2
+	lsl	r3, r1, r3
+	str	r3, [r7, #16]
+	.loc 1 1241 0
+	ldr	r2, [r7, #20]
+	ldr	r3, [r7, #16]
+	orrs	r3, r3, r2
+	str	r3, [r7, #20]
+	.loc 1 1243 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #20]
+	str	r2, [r3, #56]
+	.loc 1 1244 0
+	adds	r7, r7, #28
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE135:
+	.size	ADC_InjectedChannelConfig, .-ADC_InjectedChannelConfig
+	.section	.text.ADC_InjectedSequencerLengthConfig,"ax",%progbits
+	.align	2
+	.global	ADC_InjectedSequencerLengthConfig
+	.thumb
+	.thumb_func
+	.type	ADC_InjectedSequencerLengthConfig, %function
+ADC_InjectedSequencerLengthConfig:
+.LFB136:
+	.loc 1 1254 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI70:
+	sub	sp, sp, #20
+.LCFI71:
+	add	r7, sp, #0
+.LCFI72:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1255 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1256 0
+	movs	r3, #0
+	str	r3, [r7, #8]
+	.loc 1 1262 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #56]
+	str	r3, [r7, #12]
+	.loc 1 1265 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #3145728
+	str	r3, [r7, #12]
+	.loc 1 1268 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	subs	r3, r3, #1
+	str	r3, [r7, #8]
+	.loc 1 1269 0
+	ldr	r3, [r7, #8]
+	lsls	r3, r3, #20
+	ldr	r2, [r7, #12]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 1272 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #56]
+	.loc 1 1273 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE136:
+	.size	ADC_InjectedSequencerLengthConfig, .-ADC_InjectedSequencerLengthConfig
+	.section	.text.ADC_SetInjectedOffset,"ax",%progbits
+	.align	2
+	.global	ADC_SetInjectedOffset
+	.thumb
+	.thumb_func
+	.type	ADC_SetInjectedOffset, %function
+ADC_SetInjectedOffset:
+.LFB137:
+	.loc 1 1289 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI73:
+	sub	sp, sp, #20
+.LCFI74:
+	add	r7, sp, #0
+.LCFI75:
+	str	r0, [r7, #4]
+	mov	r3, r2
+	mov	r2, r1
+	strb	r2, [r7, #3]
+	strh	r3, [r7]	@ movhi
+	.loc 1 1290 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1296 0
+	ldr	r3, [r7, #4]
+	str	r3, [r7, #12]
+	.loc 1 1297 0
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	ldr	r3, [r7, #12]
+	add	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 1300 0
+	ldr	r3, [r7, #12]
+	ldrh	r2, [r7]
+	str	r2, [r3]
+	.loc 1 1301 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE137:
+	.size	ADC_SetInjectedOffset, .-ADC_SetInjectedOffset
+	.section	.text.ADC_ExternalTrigInjectedConvConfig,"ax",%progbits
+	.align	2
+	.global	ADC_ExternalTrigInjectedConvConfig
+	.thumb
+	.thumb_func
+	.type	ADC_ExternalTrigInjectedConvConfig, %function
+ADC_ExternalTrigInjectedConvConfig:
+.LFB138:
+	.loc 1 1327 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI76:
+	sub	sp, sp, #20
+.LCFI77:
+	add	r7, sp, #0
+.LCFI78:
+	str	r0, [r7, #4]
+	str	r1, [r7]
+	.loc 1 1328 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1334 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	str	r3, [r7, #12]
+	.loc 1 1337 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #983040
+	str	r3, [r7, #12]
+	.loc 1 1340 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 1343 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #8]
+	.loc 1 1344 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE138:
+	.size	ADC_ExternalTrigInjectedConvConfig, .-ADC_ExternalTrigInjectedConvConfig
+	.section	.text.ADC_ExternalTrigInjectedConvEdgeConfig,"ax",%progbits
+	.align	2
+	.global	ADC_ExternalTrigInjectedConvEdgeConfig
+	.thumb
+	.thumb_func
+	.type	ADC_ExternalTrigInjectedConvEdgeConfig, %function
+ADC_ExternalTrigInjectedConvEdgeConfig:
+.LFB139:
+	.loc 1 1361 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI79:
+	sub	sp, sp, #20
+.LCFI80:
+	add	r7, sp, #0
+.LCFI81:
+	str	r0, [r7, #4]
+	str	r1, [r7]
+	.loc 1 1362 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1367 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	str	r3, [r7, #12]
+	.loc 1 1369 0
+	ldr	r3, [r7, #12]
+	bic	r3, r3, #3145728
+	str	r3, [r7, #12]
+	.loc 1 1371 0
+	ldr	r2, [r7, #12]
+	ldr	r3, [r7]
+	orrs	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 1373 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r7, #12]
+	str	r2, [r3, #8]
+	.loc 1 1374 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE139:
+	.size	ADC_ExternalTrigInjectedConvEdgeConfig, .-ADC_ExternalTrigInjectedConvEdgeConfig
+	.section	.text.ADC_SoftwareStartInjectedConv,"ax",%progbits
+	.align	2
+	.global	ADC_SoftwareStartInjectedConv
+	.thumb
+	.thumb_func
+	.type	ADC_SoftwareStartInjectedConv, %function
+ADC_SoftwareStartInjectedConv:
+.LFB140:
+	.loc 1 1382 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI82:
+	sub	sp, sp, #12
+.LCFI83:
+	add	r7, sp, #0
+.LCFI84:
+	str	r0, [r7, #4]
+	.loc 1 1386 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	orr	r2, r3, #4194304
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #8]
+	.loc 1 1387 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE140:
+	.size	ADC_SoftwareStartInjectedConv, .-ADC_SoftwareStartInjectedConv
+	.section	.text.ADC_GetSoftwareStartInjectedConvCmdStatus,"ax",%progbits
+	.align	2
+	.global	ADC_GetSoftwareStartInjectedConvCmdStatus
+	.thumb
+	.thumb_func
+	.type	ADC_GetSoftwareStartInjectedConvCmdStatus, %function
+ADC_GetSoftwareStartInjectedConvCmdStatus:
+.LFB141:
+	.loc 1 1395 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI85:
+	sub	sp, sp, #20
+.LCFI86:
+	add	r7, sp, #0
+.LCFI87:
+	str	r0, [r7, #4]
+	.loc 1 1396 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+	.loc 1 1401 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #8]
+	and	r3, r3, #4194304
+	cmp	r3, #0
+	beq	.L73
+	.loc 1 1404 0
+	movs	r3, #1
+	strb	r3, [r7, #15]
+	b	.L74
+.L73:
+	.loc 1 1409 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+.L74:
+	.loc 1 1412 0
+	ldrb	r3, [r7, #15]	@ zero_extendqisi2
+	.loc 1 1413 0
+	mov	r0, r3
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE141:
+	.size	ADC_GetSoftwareStartInjectedConvCmdStatus, .-ADC_GetSoftwareStartInjectedConvCmdStatus
+	.section	.text.ADC_AutoInjectedConvCmd,"ax",%progbits
+	.align	2
+	.global	ADC_AutoInjectedConvCmd
+	.thumb
+	.thumb_func
+	.type	ADC_AutoInjectedConvCmd, %function
+ADC_AutoInjectedConvCmd:
+.LFB142:
+	.loc 1 1424 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI88:
+	sub	sp, sp, #12
+.LCFI89:
+	add	r7, sp, #0
+.LCFI90:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1428 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L77
+	.loc 1 1431 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	orr	r2, r3, #1024
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+	b	.L76
+.L77:
+	.loc 1 1436 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	bic	r2, r3, #1024
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+.L76:
+	.loc 1 1438 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE142:
+	.size	ADC_AutoInjectedConvCmd, .-ADC_AutoInjectedConvCmd
+	.section	.text.ADC_InjectedDiscModeCmd,"ax",%progbits
+	.align	2
+	.global	ADC_InjectedDiscModeCmd
+	.thumb
+	.thumb_func
+	.type	ADC_InjectedDiscModeCmd, %function
+ADC_InjectedDiscModeCmd:
+.LFB143:
+	.loc 1 1450 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI91:
+	sub	sp, sp, #12
+.LCFI92:
+	add	r7, sp, #0
+.LCFI93:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1454 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L80
+	.loc 1 1457 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	orr	r2, r3, #4096
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+	b	.L79
+.L80:
+	.loc 1 1462 0
+	ldr	r3, [r7, #4]
+	ldr	r3, [r3, #4]
+	bic	r2, r3, #4096
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+.L79:
+	.loc 1 1464 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE143:
+	.size	ADC_InjectedDiscModeCmd, .-ADC_InjectedDiscModeCmd
+	.section	.text.ADC_GetInjectedConversionValue,"ax",%progbits
+	.align	2
+	.global	ADC_GetInjectedConversionValue
+	.thumb
+	.thumb_func
+	.type	ADC_GetInjectedConversionValue, %function
+ADC_GetInjectedConversionValue:
+.LFB144:
+	.loc 1 1478 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI94:
+	sub	sp, sp, #20
+.LCFI95:
+	add	r7, sp, #0
+.LCFI96:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1479 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1485 0
+	ldr	r3, [r7, #4]
+	str	r3, [r7, #12]
+	.loc 1 1486 0
+	ldrb	r2, [r7, #3]	@ zero_extendqisi2
+	ldr	r3, [r7, #12]
+	add	r3, r3, r2
+	adds	r3, r3, #40
+	str	r3, [r7, #12]
+	.loc 1 1489 0
+	ldr	r3, [r7, #12]
+	ldr	r3, [r3]
+	uxth	r3, r3
+	.loc 1 1490 0
+	mov	r0, r3
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE144:
+	.size	ADC_GetInjectedConversionValue, .-ADC_GetInjectedConversionValue
+	.section	.text.ADC_ITConfig,"ax",%progbits
+	.align	2
+	.global	ADC_ITConfig
+	.thumb
+	.thumb_func
+	.type	ADC_ITConfig, %function
+ADC_ITConfig:
+.LFB145:
+	.loc 1 1585 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI97:
+	sub	sp, sp, #20
+.LCFI98:
+	add	r7, sp, #0
+.LCFI99:
+	str	r0, [r7, #4]
+	mov	r3, r2
+	mov	r2, r1	@ movhi
+	strh	r2, [r7, #2]	@ movhi
+	strb	r3, [r7, #1]
+	.loc 1 1586 0
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1593 0
+	ldrh	r3, [r7, #2]	@ movhi
+	uxtb	r3, r3
+	str	r3, [r7, #12]
+	.loc 1 1594 0
+	ldr	r3, [r7, #12]
+	movs	r2, #1
+	lsl	r3, r2, r3
+	str	r3, [r7, #12]
+	.loc 1 1596 0
+	ldrb	r3, [r7, #1]	@ zero_extendqisi2
+	cmp	r3, #0
+	beq	.L85
+	.loc 1 1599 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3, #4]
+	ldr	r3, [r7, #12]
+	orrs	r2, r2, r3
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+	b	.L84
+.L85:
+	.loc 1 1604 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3, #4]
+	ldr	r3, [r7, #12]
+	mvns	r3, r3
+	ands	r2, r2, r3
+	ldr	r3, [r7, #4]
+	str	r2, [r3, #4]
+.L84:
+	.loc 1 1606 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE145:
+	.size	ADC_ITConfig, .-ADC_ITConfig
+	.section	.text.ADC_GetFlagStatus,"ax",%progbits
+	.align	2
+	.global	ADC_GetFlagStatus
+	.thumb
+	.thumb_func
+	.type	ADC_GetFlagStatus, %function
+ADC_GetFlagStatus:
+.LFB146:
+	.loc 1 1622 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI100:
+	sub	sp, sp, #20
+.LCFI101:
+	add	r7, sp, #0
+.LCFI102:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1623 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+	.loc 1 1629 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3]
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	ands	r3, r3, r2
+	cmp	r3, #0
+	beq	.L88
+	.loc 1 1632 0
+	movs	r3, #1
+	strb	r3, [r7, #15]
+	b	.L89
+.L88:
+	.loc 1 1637 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+.L89:
+	.loc 1 1640 0
+	ldrb	r3, [r7, #15]	@ zero_extendqisi2
+	.loc 1 1641 0
+	mov	r0, r3
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE146:
+	.size	ADC_GetFlagStatus, .-ADC_GetFlagStatus
+	.section	.text.ADC_ClearFlag,"ax",%progbits
+	.align	2
+	.global	ADC_ClearFlag
+	.thumb
+	.thumb_func
+	.type	ADC_ClearFlag, %function
+ADC_ClearFlag:
+.LFB147:
+	.loc 1 1657 0
+	@ args = 0, pretend = 0, frame = 8
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI103:
+	sub	sp, sp, #12
+.LCFI104:
+	add	r7, sp, #0
+.LCFI105:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strb	r3, [r7, #3]
+	.loc 1 1663 0
+	ldrb	r3, [r7, #3]	@ zero_extendqisi2
+	mvns	r2, r3
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 1 1664 0
+	adds	r7, r7, #12
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE147:
+	.size	ADC_ClearFlag, .-ADC_ClearFlag
+	.section	.text.ADC_GetITStatus,"ax",%progbits
+	.align	2
+	.global	ADC_GetITStatus
+	.thumb
+	.thumb_func
+	.type	ADC_GetITStatus, %function
+ADC_GetITStatus:
+.LFB148:
+	.loc 1 1678 0
+	@ args = 0, pretend = 0, frame = 24
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI106:
+	sub	sp, sp, #28
+.LCFI107:
+	add	r7, sp, #0
+.LCFI108:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strh	r3, [r7, #2]	@ movhi
+	.loc 1 1679 0
+	movs	r3, #0
+	strb	r3, [r7, #23]
+	.loc 1 1680 0
+	movs	r3, #0
+	str	r3, [r7, #16]
+	movs	r3, #0
+	str	r3, [r7, #12]
+	.loc 1 1687 0
+	ldrh	r3, [r7, #2]
+	lsrs	r3, r3, #8
+	uxth	r3, r3
+	str	r3, [r7, #16]
+	.loc 1 1690 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3, #4]
+	ldrh	r3, [r7, #2]	@ movhi
+	uxtb	r3, r3
+	movs	r1, #1
+	lsl	r3, r1, r3
+	ands	r3, r3, r2
+	str	r3, [r7, #12]
+	.loc 1 1693 0
+	ldr	r3, [r7, #4]
+	ldr	r2, [r3]
+	ldr	r3, [r7, #16]
+	ands	r3, r3, r2
+	cmp	r3, #0
+	beq	.L93
+	.loc 1 1693 0 is_stmt 0 discriminator 1
+	ldr	r3, [r7, #12]
+	cmp	r3, #0
+	beq	.L93
+	.loc 1 1696 0 is_stmt 1
+	movs	r3, #1
+	strb	r3, [r7, #23]
+	b	.L94
+.L93:
+	.loc 1 1701 0
+	movs	r3, #0
+	strb	r3, [r7, #23]
+.L94:
+	.loc 1 1704 0
+	ldrb	r3, [r7, #23]	@ zero_extendqisi2
+	.loc 1 1705 0
+	mov	r0, r3
+	adds	r7, r7, #28
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE148:
+	.size	ADC_GetITStatus, .-ADC_GetITStatus
+	.section	.text.ADC_ClearITPendingBit,"ax",%progbits
+	.align	2
+	.global	ADC_ClearITPendingBit
+	.thumb
+	.thumb_func
+	.type	ADC_ClearITPendingBit, %function
+ADC_ClearITPendingBit:
+.LFB149:
+	.loc 1 1719 0
+	@ args = 0, pretend = 0, frame = 16
+	@ frame_needed = 1, uses_anonymous_args = 0
+	@ link register save eliminated.
+	push	{r7}
+.LCFI109:
+	sub	sp, sp, #20
+.LCFI110:
+	add	r7, sp, #0
+.LCFI111:
+	str	r0, [r7, #4]
+	mov	r3, r1
+	strh	r3, [r7, #2]	@ movhi
+	.loc 1 1720 0
+	movs	r3, #0
+	strb	r3, [r7, #15]
+	.loc 1 1725 0
+	ldrh	r3, [r7, #2]
+	lsrs	r3, r3, #8
+	uxth	r3, r3
+	strb	r3, [r7, #15]
+	.loc 1 1727 0
+	ldrb	r3, [r7, #15]	@ zero_extendqisi2
+	mvns	r2, r3
+	ldr	r3, [r7, #4]
+	str	r2, [r3]
+	.loc 1 1728 0
+	adds	r7, r7, #20
+	mov	sp, r7
+	@ sp needed
+	ldr	r7, [sp], #4
+	bx	lr
+.LFE149:
+	.size	ADC_ClearITPendingBit, .-ADC_ClearITPendingBit
+	.section	.debug_frame,"",%progbits
+.Lframe0:
+	.4byte	.LECIE0-.LSCIE0
+.LSCIE0:
+	.4byte	0xffffffff
+	.byte	0x3
+	.ascii	"\000"
+	.uleb128 0x1
+	.sleb128 -4
+	.uleb128 0xe
+	.byte	0xc
+	.uleb128 0xd
+	.uleb128 0
+	.align	2
+.LECIE0:
+.LSFDE0:
+	.4byte	.LEFDE0-.LASFDE0
+.LASFDE0:
+	.4byte	.Lframe0
+	.4byte	.LFB112
+	.4byte	.LFE112-.LFB112
+	.byte	0x4
+	.4byte	.LCFI0-.LFB112
+	.byte	0xe
+	.uleb128 0x8
+	.byte	0x87
+	.uleb128 0x2
+	.byte	0x8e
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI1-.LCFI0
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE0:
+.LSFDE2:
+	.4byte	.LEFDE2-.LASFDE2
+.LASFDE2:
+	.4byte	.Lframe0
+	.4byte	.LFB113
+	.4byte	.LFE113-.LFB113
+	.byte	0x4
+	.4byte	.LCFI2-.LFB113
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI3-.LCFI2
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI4-.LCFI3
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE2:
+.LSFDE4:
+	.4byte	.LEFDE4-.LASFDE4
+.LASFDE4:
+	.4byte	.Lframe0
+	.4byte	.LFB114
+	.4byte	.LFE114-.LFB114
+	.byte	0x4
+	.4byte	.LCFI5-.LFB114
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI6-.LCFI5
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI7-.LCFI6
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE4:
+.LSFDE6:
+	.4byte	.LEFDE6-.LASFDE6
+.LASFDE6:
+	.4byte	.Lframe0
+	.4byte	.LFB115
+	.4byte	.LFE115-.LFB115
+	.byte	0x4
+	.4byte	.LCFI8-.LFB115
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI9-.LCFI8
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI10-.LCFI9
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE6:
+.LSFDE8:
+	.4byte	.LEFDE8-.LASFDE8
+.LASFDE8:
+	.4byte	.Lframe0
+	.4byte	.LFB116
+	.4byte	.LFE116-.LFB116
+	.byte	0x4
+	.4byte	.LCFI11-.LFB116
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI12-.LCFI11
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI13-.LCFI12
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE8:
+.LSFDE10:
+	.4byte	.LEFDE10-.LASFDE10
+.LASFDE10:
+	.4byte	.Lframe0
+	.4byte	.LFB117
+	.4byte	.LFE117-.LFB117
+	.byte	0x4
+	.4byte	.LCFI14-.LFB117
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI15-.LCFI14
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI16-.LCFI15
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE10:
+.LSFDE12:
+	.4byte	.LEFDE12-.LASFDE12
+.LASFDE12:
+	.4byte	.Lframe0
+	.4byte	.LFB118
+	.4byte	.LFE118-.LFB118
+	.byte	0x4
+	.4byte	.LCFI17-.LFB118
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI18-.LCFI17
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI19-.LCFI18
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE12:
+.LSFDE14:
+	.4byte	.LEFDE14-.LASFDE14
+.LASFDE14:
+	.4byte	.Lframe0
+	.4byte	.LFB119
+	.4byte	.LFE119-.LFB119
+	.byte	0x4
+	.4byte	.LCFI20-.LFB119
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI21-.LCFI20
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI22-.LCFI21
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE14:
+.LSFDE16:
+	.4byte	.LEFDE16-.LASFDE16
+.LASFDE16:
+	.4byte	.Lframe0
+	.4byte	.LFB120
+	.4byte	.LFE120-.LFB120
+	.byte	0x4
+	.4byte	.LCFI23-.LFB120
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI24-.LCFI23
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI25-.LCFI24
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE16:
+.LSFDE18:
+	.4byte	.LEFDE18-.LASFDE18
+.LASFDE18:
+	.4byte	.Lframe0
+	.4byte	.LFB121
+	.4byte	.LFE121-.LFB121
+	.byte	0x4
+	.4byte	.LCFI26-.LFB121
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI27-.LCFI26
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI28-.LCFI27
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE18:
+.LSFDE20:
+	.4byte	.LEFDE20-.LASFDE20
+.LASFDE20:
+	.4byte	.Lframe0
+	.4byte	.LFB122
+	.4byte	.LFE122-.LFB122
+	.byte	0x4
+	.4byte	.LCFI29-.LFB122
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI30-.LCFI29
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI31-.LCFI30
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE20:
+.LSFDE22:
+	.4byte	.LEFDE22-.LASFDE22
+.LASFDE22:
+	.4byte	.Lframe0
+	.4byte	.LFB123
+	.4byte	.LFE123-.LFB123
+	.byte	0x4
+	.4byte	.LCFI32-.LFB123
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI33-.LCFI32
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI34-.LCFI33
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE22:
+.LSFDE24:
+	.4byte	.LEFDE24-.LASFDE24
+.LASFDE24:
+	.4byte	.Lframe0
+	.4byte	.LFB124
+	.4byte	.LFE124-.LFB124
+	.byte	0x4
+	.4byte	.LCFI35-.LFB124
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI36-.LCFI35
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI37-.LCFI36
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE24:
+.LSFDE26:
+	.4byte	.LEFDE26-.LASFDE26
+.LASFDE26:
+	.4byte	.Lframe0
+	.4byte	.LFB125
+	.4byte	.LFE125-.LFB125
+	.byte	0x4
+	.4byte	.LCFI38-.LFB125
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI39-.LCFI38
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI40-.LCFI39
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE26:
+.LSFDE28:
+	.4byte	.LEFDE28-.LASFDE28
+.LASFDE28:
+	.4byte	.Lframe0
+	.4byte	.LFB126
+	.4byte	.LFE126-.LFB126
+	.byte	0x4
+	.4byte	.LCFI41-.LFB126
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI42-.LCFI41
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI43-.LCFI42
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE28:
+.LSFDE30:
+	.4byte	.LEFDE30-.LASFDE30
+.LASFDE30:
+	.4byte	.Lframe0
+	.4byte	.LFB127
+	.4byte	.LFE127-.LFB127
+	.byte	0x4
+	.4byte	.LCFI44-.LFB127
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI45-.LCFI44
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI46-.LCFI45
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE30:
+.LSFDE32:
+	.4byte	.LEFDE32-.LASFDE32
+.LASFDE32:
+	.4byte	.Lframe0
+	.4byte	.LFB128
+	.4byte	.LFE128-.LFB128
+	.byte	0x4
+	.4byte	.LCFI47-.LFB128
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI48-.LCFI47
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI49-.LCFI48
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE32:
+.LSFDE34:
+	.4byte	.LEFDE34-.LASFDE34
+.LASFDE34:
+	.4byte	.Lframe0
+	.4byte	.LFB129
+	.4byte	.LFE129-.LFB129
+	.byte	0x4
+	.4byte	.LCFI50-.LFB129
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI51-.LCFI50
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI52-.LCFI51
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE34:
+.LSFDE36:
+	.4byte	.LEFDE36-.LASFDE36
+.LASFDE36:
+	.4byte	.Lframe0
+	.4byte	.LFB130
+	.4byte	.LFE130-.LFB130
+	.byte	0x4
+	.4byte	.LCFI53-.LFB130
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI54-.LCFI53
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI55-.LCFI54
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE36:
+.LSFDE38:
+	.4byte	.LEFDE38-.LASFDE38
+.LASFDE38:
+	.4byte	.Lframe0
+	.4byte	.LFB131
+	.4byte	.LFE131-.LFB131
+	.byte	0x4
+	.4byte	.LCFI56-.LFB131
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI57-.LCFI56
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE38:
+.LSFDE40:
+	.4byte	.LEFDE40-.LASFDE40
+.LASFDE40:
+	.4byte	.Lframe0
+	.4byte	.LFB132
+	.4byte	.LFE132-.LFB132
+	.byte	0x4
+	.4byte	.LCFI58-.LFB132
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI59-.LCFI58
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI60-.LCFI59
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE40:
+.LSFDE42:
+	.4byte	.LEFDE42-.LASFDE42
+.LASFDE42:
+	.4byte	.Lframe0
+	.4byte	.LFB133
+	.4byte	.LFE133-.LFB133
+	.byte	0x4
+	.4byte	.LCFI61-.LFB133
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI62-.LCFI61
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI63-.LCFI62
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE42:
+.LSFDE44:
+	.4byte	.LEFDE44-.LASFDE44
+.LASFDE44:
+	.4byte	.Lframe0
+	.4byte	.LFB134
+	.4byte	.LFE134-.LFB134
+	.byte	0x4
+	.4byte	.LCFI64-.LFB134
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI65-.LCFI64
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI66-.LCFI65
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE44:
+.LSFDE46:
+	.4byte	.LEFDE46-.LASFDE46
+.LASFDE46:
+	.4byte	.Lframe0
+	.4byte	.LFB135
+	.4byte	.LFE135-.LFB135
+	.byte	0x4
+	.4byte	.LCFI67-.LFB135
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI68-.LCFI67
+	.byte	0xe
+	.uleb128 0x20
+	.byte	0x4
+	.4byte	.LCFI69-.LCFI68
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE46:
+.LSFDE48:
+	.4byte	.LEFDE48-.LASFDE48
+.LASFDE48:
+	.4byte	.Lframe0
+	.4byte	.LFB136
+	.4byte	.LFE136-.LFB136
+	.byte	0x4
+	.4byte	.LCFI70-.LFB136
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI71-.LCFI70
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI72-.LCFI71
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE48:
+.LSFDE50:
+	.4byte	.LEFDE50-.LASFDE50
+.LASFDE50:
+	.4byte	.Lframe0
+	.4byte	.LFB137
+	.4byte	.LFE137-.LFB137
+	.byte	0x4
+	.4byte	.LCFI73-.LFB137
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI74-.LCFI73
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI75-.LCFI74
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE50:
+.LSFDE52:
+	.4byte	.LEFDE52-.LASFDE52
+.LASFDE52:
+	.4byte	.Lframe0
+	.4byte	.LFB138
+	.4byte	.LFE138-.LFB138
+	.byte	0x4
+	.4byte	.LCFI76-.LFB138
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI77-.LCFI76
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI78-.LCFI77
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE52:
+.LSFDE54:
+	.4byte	.LEFDE54-.LASFDE54
+.LASFDE54:
+	.4byte	.Lframe0
+	.4byte	.LFB139
+	.4byte	.LFE139-.LFB139
+	.byte	0x4
+	.4byte	.LCFI79-.LFB139
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI80-.LCFI79
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI81-.LCFI80
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE54:
+.LSFDE56:
+	.4byte	.LEFDE56-.LASFDE56
+.LASFDE56:
+	.4byte	.Lframe0
+	.4byte	.LFB140
+	.4byte	.LFE140-.LFB140
+	.byte	0x4
+	.4byte	.LCFI82-.LFB140
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI83-.LCFI82
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI84-.LCFI83
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE56:
+.LSFDE58:
+	.4byte	.LEFDE58-.LASFDE58
+.LASFDE58:
+	.4byte	.Lframe0
+	.4byte	.LFB141
+	.4byte	.LFE141-.LFB141
+	.byte	0x4
+	.4byte	.LCFI85-.LFB141
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI86-.LCFI85
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI87-.LCFI86
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE58:
+.LSFDE60:
+	.4byte	.LEFDE60-.LASFDE60
+.LASFDE60:
+	.4byte	.Lframe0
+	.4byte	.LFB142
+	.4byte	.LFE142-.LFB142
+	.byte	0x4
+	.4byte	.LCFI88-.LFB142
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI89-.LCFI88
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI90-.LCFI89
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE60:
+.LSFDE62:
+	.4byte	.LEFDE62-.LASFDE62
+.LASFDE62:
+	.4byte	.Lframe0
+	.4byte	.LFB143
+	.4byte	.LFE143-.LFB143
+	.byte	0x4
+	.4byte	.LCFI91-.LFB143
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI92-.LCFI91
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI93-.LCFI92
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE62:
+.LSFDE64:
+	.4byte	.LEFDE64-.LASFDE64
+.LASFDE64:
+	.4byte	.Lframe0
+	.4byte	.LFB144
+	.4byte	.LFE144-.LFB144
+	.byte	0x4
+	.4byte	.LCFI94-.LFB144
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI95-.LCFI94
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI96-.LCFI95
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE64:
+.LSFDE66:
+	.4byte	.LEFDE66-.LASFDE66
+.LASFDE66:
+	.4byte	.Lframe0
+	.4byte	.LFB145
+	.4byte	.LFE145-.LFB145
+	.byte	0x4
+	.4byte	.LCFI97-.LFB145
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI98-.LCFI97
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI99-.LCFI98
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE66:
+.LSFDE68:
+	.4byte	.LEFDE68-.LASFDE68
+.LASFDE68:
+	.4byte	.Lframe0
+	.4byte	.LFB146
+	.4byte	.LFE146-.LFB146
+	.byte	0x4
+	.4byte	.LCFI100-.LFB146
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI101-.LCFI100
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI102-.LCFI101
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE68:
+.LSFDE70:
+	.4byte	.LEFDE70-.LASFDE70
+.LASFDE70:
+	.4byte	.Lframe0
+	.4byte	.LFB147
+	.4byte	.LFE147-.LFB147
+	.byte	0x4
+	.4byte	.LCFI103-.LFB147
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI104-.LCFI103
+	.byte	0xe
+	.uleb128 0x10
+	.byte	0x4
+	.4byte	.LCFI105-.LCFI104
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE70:
+.LSFDE72:
+	.4byte	.LEFDE72-.LASFDE72
+.LASFDE72:
+	.4byte	.Lframe0
+	.4byte	.LFB148
+	.4byte	.LFE148-.LFB148
+	.byte	0x4
+	.4byte	.LCFI106-.LFB148
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI107-.LCFI106
+	.byte	0xe
+	.uleb128 0x20
+	.byte	0x4
+	.4byte	.LCFI108-.LCFI107
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE72:
+.LSFDE74:
+	.4byte	.LEFDE74-.LASFDE74
+.LASFDE74:
+	.4byte	.Lframe0
+	.4byte	.LFB149
+	.4byte	.LFE149-.LFB149
+	.byte	0x4
+	.4byte	.LCFI109-.LFB149
+	.byte	0xe
+	.uleb128 0x4
+	.byte	0x87
+	.uleb128 0x1
+	.byte	0x4
+	.4byte	.LCFI110-.LCFI109
+	.byte	0xe
+	.uleb128 0x18
+	.byte	0x4
+	.4byte	.LCFI111-.LCFI110
+	.byte	0xd
+	.uleb128 0x7
+	.align	2
+.LEFDE74:
+	.text
+.Letext0:
+	.file 2 "/Applications/CrossWorks for ARM 3.1/include/stdint.h"
+	.file 3 "/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx.h"
+	.file 4 "/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_adc.h"
+	.file 5 "/Users/Sean/Library/Rowley Associates Limited/CrossWorks for ARM/v3/packages/targets/CMSIS_3/CMSIS/Include/core_cm4.h"
+	.section	.debug_info,"",%progbits
+.Ldebug_info0:
+	.4byte	0xbfa
+	.2byte	0x4
+	.4byte	.Ldebug_abbrev0
+	.byte	0x4
+	.uleb128 0x1
+	.4byte	.LASF108
+	.byte	0x1
+	.4byte	.LASF109
+	.4byte	.Ldebug_ranges0+0
+	.4byte	0
+	.4byte	.Ldebug_line0
+	.uleb128 0x2
+	.byte	0x1
+	.byte	0x6
+	.4byte	.LASF0
+	.uleb128 0x3
+	.4byte	.LASF3
+	.byte	0x2
+	.byte	0xf
+	.4byte	0x33
+	.uleb128 0x2
+	.byte	0x1
+	.byte	0x8
+	.4byte	.LASF1
+	.uleb128 0x2
+	.byte	0x2
+	.byte	0x5
+	.4byte	.LASF2
+	.uleb128 0x3
+	.4byte	.LASF4
+	.byte	0x2
+	.byte	0x15
+	.4byte	0x4c
+	.uleb128 0x2
+	.byte	0x2
+	.byte	0x7
+	.4byte	.LASF5
+	.uleb128 0x3
+	.4byte	.LASF6
+	.byte	0x2
+	.byte	0x16
+	.4byte	0x5e
+	.uleb128 0x4
+	.byte	0x4
+	.byte	0x5
+	.ascii	"int\000"
+	.uleb128 0x3
+	.4byte	.LASF7
+	.byte	0x2
+	.byte	0x17
+	.4byte	0x70
+	.uleb128 0x2
+	.byte	0x4
+	.byte	0x7
+	.4byte	.LASF8
+	.uleb128 0x2
+	.byte	0x8
+	.byte	0x5
+	.4byte	.LASF9
+	.uleb128 0x2
+	.byte	0x8
+	.byte	0x7
+	.4byte	.LASF10
+	.uleb128 0x2
+	.byte	0x4
+	.byte	0x7
+	.4byte	.LASF11
+	.uleb128 0x5
+	.4byte	0x65
+	.uleb128 0x5
+	.4byte	0x53
+	.uleb128 0x6
+	.byte	0x1
+	.byte	0x3
+	.2byte	0x1f7
+	.4byte	0xac
+	.uleb128 0x7
+	.4byte	.LASF12
+	.sleb128 0
+	.uleb128 0x8
+	.ascii	"SET\000"
+	.sleb128 1
+	.byte	0
+	.uleb128 0x9
+	.4byte	.LASF13
+	.byte	0x3
+	.2byte	0x1f7
+	.4byte	0x96
+	.uleb128 0x9
+	.4byte	.LASF14
+	.byte	0x3
+	.2byte	0x1f7
+	.4byte	0x96
+	.uleb128 0x6
+	.byte	0x1
+	.byte	0x3
+	.2byte	0x1f9
+	.4byte	0xda
+	.uleb128 0x7
+	.4byte	.LASF15
+	.sleb128 0
+	.uleb128 0x7
+	.4byte	.LASF16
+	.sleb128 1
+	.byte	0
+	.uleb128 0x9
+	.4byte	.LASF17
+	.byte	0x3
+	.2byte	0x1f9
+	.4byte	0xc4
+	.uleb128 0xa
+	.byte	0x50
+	.byte	0x3
+	.2byte	0x20a
+	.4byte	0x1f2
+	.uleb128 0xb
+	.ascii	"SR\000"
+	.byte	0x3
+	.2byte	0x20c
+	.4byte	0x8c
+	.byte	0
+	.uleb128 0xb
+	.ascii	"CR1\000"
+	.byte	0x3
+	.2byte	0x20d
+	.4byte	0x8c
+	.byte	0x4
+	.uleb128 0xb
+	.ascii	"CR2\000"
+	.byte	0x3
+	.2byte	0x20e
+	.4byte	0x8c
+	.byte	0x8
+	.uleb128 0xc
+	.4byte	.LASF18
+	.byte	0x3
+	.2byte	0x20f
+	.4byte	0x8c
+	.byte	0xc
+	.uleb128 0xc
+	.4byte	.LASF19
+	.byte	0x3
+	.2byte	0x210
+	.4byte	0x8c
+	.byte	0x10
+	.uleb128 0xc
+	.4byte	.LASF20
+	.byte	0x3
+	.2byte	0x211
+	.4byte	0x8c
+	.byte	0x14
+	.uleb128 0xc
+	.4byte	.LASF21
+	.byte	0x3
+	.2byte	0x212
+	.4byte	0x8c
+	.byte	0x18
+	.uleb128 0xc
+	.4byte	.LASF22
+	.byte	0x3
+	.2byte	0x213
+	.4byte	0x8c
+	.byte	0x1c
+	.uleb128 0xc
+	.4byte	.LASF23
+	.byte	0x3
+	.2byte	0x214
+	.4byte	0x8c
+	.byte	0x20
+	.uleb128 0xb
+	.ascii	"HTR\000"
+	.byte	0x3
+	.2byte	0x215
+	.4byte	0x8c
+	.byte	0x24
+	.uleb128 0xb
+	.ascii	"LTR\000"
+	.byte	0x3
+	.2byte	0x216
+	.4byte	0x8c
+	.byte	0x28
+	.uleb128 0xc
+	.4byte	.LASF24
+	.byte	0x3
+	.2byte	0x217
+	.4byte	0x8c
+	.byte	0x2c
+	.uleb128 0xc
+	.4byte	.LASF25
+	.byte	0x3
+	.2byte	0x218
+	.4byte	0x8c
+	.byte	0x30
+	.uleb128 0xc
+	.4byte	.LASF26
+	.byte	0x3
+	.2byte	0x219
+	.4byte	0x8c
+	.byte	0x34
+	.uleb128 0xc
+	.4byte	.LASF27
+	.byte	0x3
+	.2byte	0x21a
+	.4byte	0x8c
+	.byte	0x38
+	.uleb128 0xc
+	.4byte	.LASF28
+	.byte	0x3
+	.2byte	0x21b
+	.4byte	0x8c
+	.byte	0x3c
+	.uleb128 0xc
+	.4byte	.LASF29
+	.byte	0x3
+	.2byte	0x21c
+	.4byte	0x8c
+	.byte	0x40
+	.uleb128 0xc
+	.4byte	.LASF30
+	.byte	0x3
+	.2byte	0x21d
+	.4byte	0x8c
+	.byte	0x44
+	.uleb128 0xc
+	.4byte	.LASF31
+	.byte	0x3
+	.2byte	0x21e
+	.4byte	0x8c
+	.byte	0x48
+	.uleb128 0xb
+	.ascii	"DR\000"
+	.byte	0x3
+	.2byte	0x21f
+	.4byte	0x8c
+	.byte	0x4c
+	.byte	0
+	.uleb128 0x9
+	.4byte	.LASF32
+	.byte	0x3
+	.2byte	0x220
+	.4byte	0xe6
+	.uleb128 0xa
+	.byte	0xc
+	.byte	0x3
+	.2byte	0x222
+	.4byte	0x22f
+	.uleb128 0xb
+	.ascii	"CSR\000"
+	.byte	0x3
+	.2byte	0x224
+	.4byte	0x8c
+	.byte	0
+	.uleb128 0xb
+	.ascii	"CCR\000"
+	.byte	0x3
+	.2byte	0x225
+	.4byte	0x8c
+	.byte	0x4
+	.uleb128 0xb
+	.ascii	"CDR\000"
+	.byte	0x3
+	.2byte	0x226
+	.4byte	0x8c
+	.byte	0x8
+	.byte	0
+	.uleb128 0x9
+	.4byte	.LASF33
+	.byte	0x3
+	.2byte	0x228
+	.4byte	0x1fe
+	.uleb128 0xd
+	.byte	0x18
+	.byte	0x4
+	.byte	0x35
+	.4byte	0x298
+	.uleb128 0xe
+	.4byte	.LASF34
+	.byte	0x4
+	.byte	0x37
+	.4byte	0x65
+	.byte	0
+	.uleb128 0xe
+	.4byte	.LASF35
+	.byte	0x4
+	.byte	0x39
+	.4byte	0xda
+	.byte	0x4
+	.uleb128 0xe
+	.4byte	.LASF36
+	.byte	0x4
+	.byte	0x3d
+	.4byte	0xda
+	.byte	0x5
+	.uleb128 0xe
+	.4byte	.LASF37
+	.byte	0x4
+	.byte	0x40
+	.4byte	0x65
+	.byte	0x8
+	.uleb128 0xe
+	.4byte	.LASF38
+	.byte	0x4
+	.byte	0x44
+	.4byte	0x65
+	.byte	0xc
+	.uleb128 0xe
+	.4byte	.LASF39
+	.byte	0x4
+	.byte	0x48
+	.4byte	0x65
+	.byte	0x10
+	.uleb128 0xe
+	.4byte	.LASF40
+	.byte	0x4
+	.byte	0x4b
+	.4byte	0x28
+	.byte	0x14
+	.byte	0
+	.uleb128 0x3
+	.4byte	.LASF41
+	.byte	0x4
+	.byte	0x4f
+	.4byte	0x23b
+	.uleb128 0xd
+	.byte	0x10
+	.byte	0x4
+	.byte	0x54
+	.4byte	0x2dc
+	.uleb128 0xe
+	.4byte	.LASF42
+	.byte	0x4
+	.byte	0x56
+	.4byte	0x65
+	.byte	0
+	.uleb128 0xe
+	.4byte	.LASF43
+	.byte	0x4
+	.byte	0x59
+	.4byte	0x65
+	.byte	0x4
+	.uleb128 0xe
+	.4byte	.LASF44
+	.byte	0x4
+	.byte	0x5c
+	.4byte	0x65
+	.byte	0x8
+	.uleb128 0xe
+	.4byte	.LASF45
+	.byte	0x4
+	.byte	0x60
+	.4byte	0x65
+	.byte	0xc
+	.byte	0
+	.uleb128 0x3
+	.4byte	.LASF46
+	.byte	0x4
+	.byte	0x64
+	.4byte	0x2a3
+	.uleb128 0xf
+	.4byte	.LASF110
+	.byte	0x1
+	.byte	0xd5
+	.4byte	.LFB112
+	.4byte	.LFE112-.LFB112
+	.uleb128 0x1
+	.byte	0x9c
+	.uleb128 0x10
+	.4byte	.LASF51
+	.byte	0x1
+	.byte	0xeb
+	.4byte	.LFB113
+	.4byte	.LFE113-.LFB113
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x346
+	.uleb128 0x11
+	.4byte	.LASF47
+	.byte	0x1
+	.byte	0xeb
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x11
+	.4byte	.LASF48
+	.byte	0x1
+	.byte	0xeb
+	.4byte	0x34c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x12
+	.4byte	.LASF49
+	.byte	0x1
+	.byte	0xed
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x12
+	.4byte	.LASF50
+	.byte	0x1
+	.byte	0xee
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x1f2
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x298
+	.uleb128 0x14
+	.4byte	.LASF52
+	.byte	0x1
+	.2byte	0x136
+	.4byte	.LFB114
+	.4byte	.LFE114-.LFB114
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x378
+	.uleb128 0x15
+	.4byte	.LASF48
+	.byte	0x1
+	.2byte	0x136
+	.4byte	0x34c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF53
+	.byte	0x1
+	.2byte	0x155
+	.4byte	.LFB115
+	.4byte	.LFE115-.LFB115
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x3ad
+	.uleb128 0x15
+	.4byte	.LASF54
+	.byte	0x1
+	.2byte	0x155
+	.4byte	0x3ad
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x16
+	.4byte	.LASF49
+	.byte	0x1
+	.2byte	0x157
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x13
+	.byte	0x4
+	.4byte	0x2dc
+	.uleb128 0x14
+	.4byte	.LASF55
+	.byte	0x1
+	.2byte	0x179
+	.4byte	.LFB116
+	.4byte	.LFE116-.LFB116
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x3d9
+	.uleb128 0x15
+	.4byte	.LASF54
+	.byte	0x1
+	.2byte	0x179
+	.4byte	0x3ad
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF56
+	.byte	0x1
+	.2byte	0x18f
+	.4byte	.LFB117
+	.4byte	.LFE117-.LFB117
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x40e
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x18f
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x18f
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF58
+	.byte	0x1
+	.2byte	0x1c7
+	.4byte	.LFB118
+	.4byte	.LFE118-.LFB118
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x452
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x1c7
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF59
+	.byte	0x1
+	.2byte	0x1c7
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x16
+	.4byte	.LASF60
+	.byte	0x1
+	.2byte	0x1c9
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF61
+	.byte	0x1
+	.2byte	0x1e4
+	.4byte	.LFB119
+	.4byte	.LFE119-.LFB119
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x496
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x1e4
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF62
+	.byte	0x1
+	.2byte	0x1e4
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -14
+	.uleb128 0x15
+	.4byte	.LASF63
+	.byte	0x1
+	.2byte	0x1e5
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF64
+	.byte	0x1
+	.2byte	0x20d
+	.4byte	.LFB120
+	.4byte	.LFE120-.LFB120
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x4da
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x20d
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF65
+	.byte	0x1
+	.2byte	0x20d
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x16
+	.4byte	.LASF60
+	.byte	0x1
+	.2byte	0x20f
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF66
+	.byte	0x1
+	.2byte	0x24d
+	.4byte	.LFB121
+	.4byte	.LFE121-.LFB121
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x500
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x24d
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF67
+	.byte	0x1
+	.2byte	0x267
+	.4byte	.LFB122
+	.4byte	.LFE122-.LFB122
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x526
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x267
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF68
+	.byte	0x1
+	.2byte	0x2cb
+	.4byte	.LFB123
+	.4byte	.LFE123-.LFB123
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x597
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x2cb
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF65
+	.byte	0x1
+	.2byte	0x2cb
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x15
+	.4byte	.LASF69
+	.byte	0x1
+	.2byte	0x2cb
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -22
+	.uleb128 0x15
+	.4byte	.LASF70
+	.byte	0x1
+	.2byte	0x2cb
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -23
+	.uleb128 0x16
+	.4byte	.LASF49
+	.byte	0x1
+	.2byte	0x2cd
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x16
+	.4byte	.LASF50
+	.byte	0x1
+	.2byte	0x2cd
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF71
+	.byte	0x1
+	.2byte	0x343
+	.4byte	.LFB124
+	.4byte	.LFE124-.LFB124
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x5bd
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x343
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF78
+	.byte	0x1
+	.2byte	0x351
+	.4byte	0xac
+	.4byte	.LFB125
+	.4byte	.LFE125-.LFB125
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x5f6
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x351
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x16
+	.4byte	.LASF72
+	.byte	0x1
+	.2byte	0x353
+	.4byte	0xac
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF73
+	.byte	0x1
+	.2byte	0x36f
+	.4byte	.LFB126
+	.4byte	.LFE126-.LFB126
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x62b
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x36f
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x36f
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF74
+	.byte	0x1
+	.2byte	0x388
+	.4byte	.LFB127
+	.4byte	.LFE127-.LFB127
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x660
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x388
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x388
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF75
+	.byte	0x1
+	.2byte	0x3a2
+	.4byte	.LFB128
+	.4byte	.LFE128-.LFB128
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x6b3
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x3a2
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF76
+	.byte	0x1
+	.2byte	0x3a2
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x16
+	.4byte	.LASF49
+	.byte	0x1
+	.2byte	0x3a4
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x16
+	.4byte	.LASF50
+	.byte	0x1
+	.2byte	0x3a5
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF77
+	.byte	0x1
+	.2byte	0x3c2
+	.4byte	.LFB129
+	.4byte	.LFE129-.LFB129
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x6e8
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x3c2
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x3c2
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF79
+	.byte	0x1
+	.2byte	0x3d9
+	.4byte	0x41
+	.4byte	.LFB130
+	.4byte	.LFE130-.LFB130
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x712
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x3d9
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x18
+	.4byte	.LASF111
+	.byte	0x1
+	.2byte	0x3ee
+	.4byte	0x65
+	.4byte	.LFB131
+	.4byte	.LFE131-.LFB131
+	.uleb128 0x1
+	.byte	0x9c
+	.uleb128 0x14
+	.4byte	.LASF80
+	.byte	0x1
+	.2byte	0x41c
+	.4byte	.LFB132
+	.4byte	.LFE132-.LFB132
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x75d
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x41c
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x41c
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF81
+	.byte	0x1
+	.2byte	0x434
+	.4byte	.LFB133
+	.4byte	.LFE133-.LFB133
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x792
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x434
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x434
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF82
+	.byte	0x1
+	.2byte	0x44f
+	.4byte	.LFB134
+	.4byte	.LFE134-.LFB134
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x7b8
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x44f
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF83
+	.byte	0x1
+	.2byte	0x4a6
+	.4byte	.LFB135
+	.4byte	.LFE135-.LFB135
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x838
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x4a6
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x15
+	.4byte	.LASF65
+	.byte	0x1
+	.2byte	0x4a6
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -29
+	.uleb128 0x15
+	.4byte	.LASF69
+	.byte	0x1
+	.2byte	0x4a6
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -30
+	.uleb128 0x15
+	.4byte	.LASF70
+	.byte	0x1
+	.2byte	0x4a6
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -31
+	.uleb128 0x16
+	.4byte	.LASF49
+	.byte	0x1
+	.2byte	0x4a8
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x16
+	.4byte	.LASF50
+	.byte	0x1
+	.2byte	0x4a8
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x16
+	.4byte	.LASF84
+	.byte	0x1
+	.2byte	0x4a8
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF85
+	.byte	0x1
+	.2byte	0x4e5
+	.4byte	.LFB136
+	.4byte	.LFE136-.LFB136
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x88b
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x4e5
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF86
+	.byte	0x1
+	.2byte	0x4e5
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x16
+	.4byte	.LASF49
+	.byte	0x1
+	.2byte	0x4e7
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x16
+	.4byte	.LASF50
+	.byte	0x1
+	.2byte	0x4e8
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF87
+	.byte	0x1
+	.2byte	0x508
+	.4byte	.LFB137
+	.4byte	.LFE137-.LFB137
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x8de
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x508
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF88
+	.byte	0x1
+	.2byte	0x508
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x15
+	.4byte	.LASF89
+	.byte	0x1
+	.2byte	0x508
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x19
+	.ascii	"tmp\000"
+	.byte	0x1
+	.2byte	0x50a
+	.4byte	0x8c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF90
+	.byte	0x1
+	.2byte	0x52e
+	.4byte	.LFB138
+	.4byte	.LFE138-.LFB138
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x922
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x52e
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF91
+	.byte	0x1
+	.2byte	0x52e
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x16
+	.4byte	.LASF60
+	.byte	0x1
+	.2byte	0x530
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF92
+	.byte	0x1
+	.2byte	0x550
+	.4byte	.LFB139
+	.4byte	.LFE139-.LFB139
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x966
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x550
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF93
+	.byte	0x1
+	.2byte	0x550
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -24
+	.uleb128 0x16
+	.4byte	.LASF60
+	.byte	0x1
+	.2byte	0x552
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF94
+	.byte	0x1
+	.2byte	0x565
+	.4byte	.LFB140
+	.4byte	.LFE140-.LFB140
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x98c
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x565
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF95
+	.byte	0x1
+	.2byte	0x572
+	.4byte	0xac
+	.4byte	.LFB141
+	.4byte	.LFE141-.LFB141
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x9c5
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x572
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x16
+	.4byte	.LASF72
+	.byte	0x1
+	.2byte	0x574
+	.4byte	0xac
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF96
+	.byte	0x1
+	.2byte	0x58f
+	.4byte	.LFB142
+	.4byte	.LFE142-.LFB142
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0x9fa
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x58f
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x58f
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF97
+	.byte	0x1
+	.2byte	0x5a9
+	.4byte	.LFB143
+	.4byte	.LFE143-.LFB143
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xa2f
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x5a9
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x5a9
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF98
+	.byte	0x1
+	.2byte	0x5c5
+	.4byte	0x41
+	.4byte	.LFB144
+	.4byte	.LFE144-.LFB144
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xa77
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x5c5
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF88
+	.byte	0x1
+	.2byte	0x5c5
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x19
+	.ascii	"tmp\000"
+	.byte	0x1
+	.2byte	0x5c7
+	.4byte	0x8c
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF99
+	.byte	0x1
+	.2byte	0x630
+	.4byte	.LFB145
+	.4byte	.LFE145-.LFB145
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xaca
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x630
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF100
+	.byte	0x1
+	.2byte	0x630
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -22
+	.uleb128 0x15
+	.4byte	.LASF57
+	.byte	0x1
+	.2byte	0x630
+	.4byte	0xda
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -23
+	.uleb128 0x16
+	.4byte	.LASF101
+	.byte	0x1
+	.2byte	0x632
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF102
+	.byte	0x1
+	.2byte	0x655
+	.4byte	0xac
+	.4byte	.LFB146
+	.4byte	.LFE146-.LFB146
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xb12
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x655
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF103
+	.byte	0x1
+	.2byte	0x655
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -21
+	.uleb128 0x16
+	.4byte	.LASF72
+	.byte	0x1
+	.2byte	0x657
+	.4byte	0xac
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF104
+	.byte	0x1
+	.2byte	0x678
+	.4byte	.LFB147
+	.4byte	.LFE147-.LFB147
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xb47
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x678
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -12
+	.uleb128 0x15
+	.4byte	.LASF103
+	.byte	0x1
+	.2byte	0x678
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -13
+	.byte	0
+	.uleb128 0x17
+	.4byte	.LASF105
+	.byte	0x1
+	.2byte	0x68d
+	.4byte	0xb8
+	.4byte	.LFB148
+	.4byte	.LFE148-.LFB148
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xbad
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x68d
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -28
+	.uleb128 0x15
+	.4byte	.LASF100
+	.byte	0x1
+	.2byte	0x68d
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -30
+	.uleb128 0x16
+	.4byte	.LASF72
+	.byte	0x1
+	.2byte	0x68f
+	.4byte	0xb8
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.uleb128 0x16
+	.4byte	.LASF101
+	.byte	0x1
+	.2byte	0x690
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -16
+	.uleb128 0x16
+	.4byte	.LASF106
+	.byte	0x1
+	.2byte	0x690
+	.4byte	0x65
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.byte	0
+	.uleb128 0x14
+	.4byte	.LASF107
+	.byte	0x1
+	.2byte	0x6b6
+	.4byte	.LFB149
+	.4byte	.LFE149-.LFB149
+	.uleb128 0x1
+	.byte	0x9c
+	.4byte	0xbf1
+	.uleb128 0x15
+	.4byte	.LASF47
+	.byte	0x1
+	.2byte	0x6b6
+	.4byte	0x346
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -20
+	.uleb128 0x15
+	.4byte	.LASF100
+	.byte	0x1
+	.2byte	0x6b6
+	.4byte	0x41
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -22
+	.uleb128 0x16
+	.4byte	.LASF101
+	.byte	0x1
+	.2byte	0x6b8
+	.4byte	0x28
+	.uleb128 0x2
+	.byte	0x91
+	.sleb128 -9
+	.byte	0
+	.uleb128 0x1a
+	.4byte	.LASF112
+	.byte	0x5
+	.2byte	0x6a7
+	.4byte	0x91
+	.byte	0
+	.section	.debug_abbrev,"",%progbits
+.Ldebug_abbrev0:
+	.uleb128 0x1
+	.uleb128 0x11
+	.byte	0x1
+	.uleb128 0x25
+	.uleb128 0xe
+	.uleb128 0x13
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x55
+	.uleb128 0x17
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x10
+	.uleb128 0x17
+	.byte	0
+	.byte	0
+	.uleb128 0x2
+	.uleb128 0x24
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3e
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0xe
+	.byte	0
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x16
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x4
+	.uleb128 0x24
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3e
+	.uleb128 0xb
+	.uleb128 0x3
+	.uleb128 0x8
+	.byte	0
+	.byte	0
+	.uleb128 0x5
+	.uleb128 0x35
+	.byte	0
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x6
+	.uleb128 0x4
+	.byte	0x1
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x7
+	.uleb128 0x28
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x1c
+	.uleb128 0xd
+	.byte	0
+	.byte	0
+	.uleb128 0x8
+	.uleb128 0x28
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x1c
+	.uleb128 0xd
+	.byte	0
+	.byte	0
+	.uleb128 0x9
+	.uleb128 0x16
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xa
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0xc
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0xd
+	.uleb128 0x13
+	.byte	0x1
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0xe
+	.uleb128 0xd
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x38
+	.uleb128 0xb
+	.byte	0
+	.byte	0
+	.uleb128 0xf
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2116
+	.uleb128 0x19
+	.byte	0
+	.byte	0
+	.uleb128 0x10
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2117
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x11
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x12
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x13
+	.uleb128 0xf
+	.byte	0
+	.uleb128 0xb
+	.uleb128 0xb
+	.uleb128 0x49
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x14
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2117
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x15
+	.uleb128 0x5
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x16
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x17
+	.uleb128 0x2e
+	.byte	0x1
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2117
+	.uleb128 0x19
+	.uleb128 0x1
+	.uleb128 0x13
+	.byte	0
+	.byte	0
+	.uleb128 0x18
+	.uleb128 0x2e
+	.byte	0
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x27
+	.uleb128 0x19
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x11
+	.uleb128 0x1
+	.uleb128 0x12
+	.uleb128 0x6
+	.uleb128 0x40
+	.uleb128 0x18
+	.uleb128 0x2117
+	.uleb128 0x19
+	.byte	0
+	.byte	0
+	.uleb128 0x19
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0x8
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x2
+	.uleb128 0x18
+	.byte	0
+	.byte	0
+	.uleb128 0x1a
+	.uleb128 0x34
+	.byte	0
+	.uleb128 0x3
+	.uleb128 0xe
+	.uleb128 0x3a
+	.uleb128 0xb
+	.uleb128 0x3b
+	.uleb128 0x5
+	.uleb128 0x49
+	.uleb128 0x13
+	.uleb128 0x3f
+	.uleb128 0x19
+	.uleb128 0x3c
+	.uleb128 0x19
+	.byte	0
+	.byte	0
+	.byte	0
+	.section	.debug_aranges,"",%progbits
+	.4byte	0x144
+	.2byte	0x2
+	.4byte	.Ldebug_info0
+	.byte	0x4
+	.byte	0
+	.2byte	0
+	.2byte	0
+	.4byte	.LFB112
+	.4byte	.LFE112-.LFB112
+	.4byte	.LFB113
+	.4byte	.LFE113-.LFB113
+	.4byte	.LFB114
+	.4byte	.LFE114-.LFB114
+	.4byte	.LFB115
+	.4byte	.LFE115-.LFB115
+	.4byte	.LFB116
+	.4byte	.LFE116-.LFB116
+	.4byte	.LFB117
+	.4byte	.LFE117-.LFB117
+	.4byte	.LFB118
+	.4byte	.LFE118-.LFB118
+	.4byte	.LFB119
+	.4byte	.LFE119-.LFB119
+	.4byte	.LFB120
+	.4byte	.LFE120-.LFB120
+	.4byte	.LFB121
+	.4byte	.LFE121-.LFB121
+	.4byte	.LFB122
+	.4byte	.LFE122-.LFB122
+	.4byte	.LFB123
+	.4byte	.LFE123-.LFB123
+	.4byte	.LFB124
+	.4byte	.LFE124-.LFB124
+	.4byte	.LFB125
+	.4byte	.LFE125-.LFB125
+	.4byte	.LFB126
+	.4byte	.LFE126-.LFB126
+	.4byte	.LFB127
+	.4byte	.LFE127-.LFB127
+	.4byte	.LFB128
+	.4byte	.LFE128-.LFB128
+	.4byte	.LFB129
+	.4byte	.LFE129-.LFB129
+	.4byte	.LFB130
+	.4byte	.LFE130-.LFB130
+	.4byte	.LFB131
+	.4byte	.LFE131-.LFB131
+	.4byte	.LFB132
+	.4byte	.LFE132-.LFB132
+	.4byte	.LFB133
+	.4byte	.LFE133-.LFB133
+	.4byte	.LFB134
+	.4byte	.LFE134-.LFB134
+	.4byte	.LFB135
+	.4byte	.LFE135-.LFB135
+	.4byte	.LFB136
+	.4byte	.LFE136-.LFB136
+	.4byte	.LFB137
+	.4byte	.LFE137-.LFB137
+	.4byte	.LFB138
+	.4byte	.LFE138-.LFB138
+	.4byte	.LFB139
+	.4byte	.LFE139-.LFB139
+	.4byte	.LFB140
+	.4byte	.LFE140-.LFB140
+	.4byte	.LFB141
+	.4byte	.LFE141-.LFB141
+	.4byte	.LFB142
+	.4byte	.LFE142-.LFB142
+	.4byte	.LFB143
+	.4byte	.LFE143-.LFB143
+	.4byte	.LFB144
+	.4byte	.LFE144-.LFB144
+	.4byte	.LFB145
+	.4byte	.LFE145-.LFB145
+	.4byte	.LFB146
+	.4byte	.LFE146-.LFB146
+	.4byte	.LFB147
+	.4byte	.LFE147-.LFB147
+	.4byte	.LFB148
+	.4byte	.LFE148-.LFB148
+	.4byte	.LFB149
+	.4byte	.LFE149-.LFB149
+	.4byte	0
+	.4byte	0
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.4byte	.LFB112
+	.4byte	.LFE112
+	.4byte	.LFB113
+	.4byte	.LFE113
+	.4byte	.LFB114
+	.4byte	.LFE114
+	.4byte	.LFB115
+	.4byte	.LFE115
+	.4byte	.LFB116
+	.4byte	.LFE116
+	.4byte	.LFB117
+	.4byte	.LFE117
+	.4byte	.LFB118
+	.4byte	.LFE118
+	.4byte	.LFB119
+	.4byte	.LFE119
+	.4byte	.LFB120
+	.4byte	.LFE120
+	.4byte	.LFB121
+	.4byte	.LFE121
+	.4byte	.LFB122
+	.4byte	.LFE122
+	.4byte	.LFB123
+	.4byte	.LFE123
+	.4byte	.LFB124
+	.4byte	.LFE124
+	.4byte	.LFB125
+	.4byte	.LFE125
+	.4byte	.LFB126
+	.4byte	.LFE126
+	.4byte	.LFB127
+	.4byte	.LFE127
+	.4byte	.LFB128
+	.4byte	.LFE128
+	.4byte	.LFB129
+	.4byte	.LFE129
+	.4byte	.LFB130
+	.4byte	.LFE130
+	.4byte	.LFB131
+	.4byte	.LFE131
+	.4byte	.LFB132
+	.4byte	.LFE132
+	.4byte	.LFB133
+	.4byte	.LFE133
+	.4byte	.LFB134
+	.4byte	.LFE134
+	.4byte	.LFB135
+	.4byte	.LFE135
+	.4byte	.LFB136
+	.4byte	.LFE136
+	.4byte	.LFB137
+	.4byte	.LFE137
+	.4byte	.LFB138
+	.4byte	.LFE138
+	.4byte	.LFB139
+	.4byte	.LFE139
+	.4byte	.LFB140
+	.4byte	.LFE140
+	.4byte	.LFB141
+	.4byte	.LFE141
+	.4byte	.LFB142
+	.4byte	.LFE142
+	.4byte	.LFB143
+	.4byte	.LFE143
+	.4byte	.LFB144
+	.4byte	.LFE144
+	.4byte	.LFB145
+	.4byte	.LFE145
+	.4byte	.LFB146
+	.4byte	.LFE146
+	.4byte	.LFB147
+	.4byte	.LFE147
+	.4byte	.LFB148
+	.4byte	.LFE148
+	.4byte	.LFB149
+	.4byte	.LFE149
+	.4byte	0
+	.4byte	0
+	.section	.debug_line,"",%progbits
+.Ldebug_line0:
+	.section	.debug_str,"MS",%progbits,1
+.LASF47:
+	.ascii	"ADCx\000"
+.LASF49:
+	.ascii	"tmpreg1\000"
+.LASF50:
+	.ascii	"tmpreg2\000"
+.LASF84:
+	.ascii	"tmpreg3\000"
+.LASF71:
+	.ascii	"ADC_SoftwareStartConv\000"
+.LASF41:
+	.ascii	"ADC_InitTypeDef\000"
+.LASF99:
+	.ascii	"ADC_ITConfig\000"
+.LASF34:
+	.ascii	"ADC_Resolution\000"
+.LASF111:
+	.ascii	"ADC_GetMultiModeConversionValue\000"
+.LASF92:
+	.ascii	"ADC_ExternalTrigInjectedConvEdgeConfig\000"
+.LASF91:
+	.ascii	"ADC_ExternalTrigInjecConv\000"
+.LASF30:
+	.ascii	"JDR3\000"
+.LASF31:
+	.ascii	"JDR4\000"
+.LASF11:
+	.ascii	"sizetype\000"
+.LASF105:
+	.ascii	"ADC_GetITStatus\000"
+.LASF66:
+	.ascii	"ADC_TempSensorVrefintCmd\000"
+.LASF76:
+	.ascii	"Number\000"
+.LASF58:
+	.ascii	"ADC_AnalogWatchdogCmd\000"
+.LASF9:
+	.ascii	"long long int\000"
+.LASF56:
+	.ascii	"ADC_Cmd\000"
+.LASF54:
+	.ascii	"ADC_CommonInitStruct\000"
+.LASF27:
+	.ascii	"JSQR\000"
+.LASF2:
+	.ascii	"short int\000"
+.LASF48:
+	.ascii	"ADC_InitStruct\000"
+.LASF40:
+	.ascii	"ADC_NbrOfConversion\000"
+.LASF61:
+	.ascii	"ADC_AnalogWatchdogThresholdsConfig\000"
+.LASF94:
+	.ascii	"ADC_SoftwareStartInjectedConv\000"
+.LASF107:
+	.ascii	"ADC_ClearITPendingBit\000"
+.LASF3:
+	.ascii	"uint8_t\000"
+.LASF103:
+	.ascii	"ADC_FLAG\000"
+.LASF104:
+	.ascii	"ADC_ClearFlag\000"
+.LASF78:
+	.ascii	"ADC_GetSoftwareStartConvStatus\000"
+.LASF57:
+	.ascii	"NewState\000"
+.LASF45:
+	.ascii	"ADC_TwoSamplingDelay\000"
+.LASF68:
+	.ascii	"ADC_RegularChannelConfig\000"
+.LASF15:
+	.ascii	"DISABLE\000"
+.LASF33:
+	.ascii	"ADC_Common_TypeDef\000"
+.LASF106:
+	.ascii	"enablestatus\000"
+.LASF55:
+	.ascii	"ADC_CommonStructInit\000"
+.LASF93:
+	.ascii	"ADC_ExternalTrigInjecConvEdge\000"
+.LASF35:
+	.ascii	"ADC_ScanConvMode\000"
+.LASF89:
+	.ascii	"Offset\000"
+.LASF37:
+	.ascii	"ADC_ExternalTrigConvEdge\000"
+.LASF43:
+	.ascii	"ADC_Prescaler\000"
+.LASF109:
+	.ascii	"/Users/Sean/Documents/CrossWorks Projects/Calchack_"
+	.ascii	"F4/stm32f4xx_adc.c\000"
+.LASF28:
+	.ascii	"JDR1\000"
+.LASF13:
+	.ascii	"FlagStatus\000"
+.LASF29:
+	.ascii	"JDR2\000"
+.LASF75:
+	.ascii	"ADC_DiscModeChannelCountConfig\000"
+.LASF79:
+	.ascii	"ADC_GetConversionValue\000"
+.LASF82:
+	.ascii	"ADC_MultiModeDMARequestAfterLastTransferCmd\000"
+.LASF60:
+	.ascii	"tmpreg\000"
+.LASF69:
+	.ascii	"Rank\000"
+.LASF96:
+	.ascii	"ADC_AutoInjectedConvCmd\000"
+.LASF23:
+	.ascii	"JOFR4\000"
+.LASF95:
+	.ascii	"ADC_GetSoftwareStartInjectedConvCmdStatus\000"
+.LASF1:
+	.ascii	"unsigned char\000"
+.LASF110:
+	.ascii	"ADC_DeInit\000"
+.LASF85:
+	.ascii	"ADC_InjectedSequencerLengthConfig\000"
+.LASF97:
+	.ascii	"ADC_InjectedDiscModeCmd\000"
+.LASF0:
+	.ascii	"signed char\000"
+.LASF10:
+	.ascii	"long long unsigned int\000"
+.LASF7:
+	.ascii	"uint32_t\000"
+.LASF90:
+	.ascii	"ADC_ExternalTrigInjectedConvConfig\000"
+.LASF63:
+	.ascii	"LowThreshold\000"
+.LASF62:
+	.ascii	"HighThreshold\000"
+.LASF4:
+	.ascii	"uint16_t\000"
+.LASF65:
+	.ascii	"ADC_Channel\000"
+.LASF22:
+	.ascii	"JOFR3\000"
+.LASF46:
+	.ascii	"ADC_CommonInitTypeDef\000"
+.LASF44:
+	.ascii	"ADC_DMAAccessMode\000"
+.LASF5:
+	.ascii	"short unsigned int\000"
+.LASF42:
+	.ascii	"ADC_Mode\000"
+.LASF39:
+	.ascii	"ADC_DataAlign\000"
+.LASF6:
+	.ascii	"int32_t\000"
+.LASF72:
+	.ascii	"bitstatus\000"
+.LASF36:
+	.ascii	"ADC_ContinuousConvMode\000"
+.LASF86:
+	.ascii	"Length\000"
+.LASF20:
+	.ascii	"JOFR1\000"
+.LASF8:
+	.ascii	"unsigned int\000"
+.LASF14:
+	.ascii	"ITStatus\000"
+.LASF59:
+	.ascii	"ADC_AnalogWatchdog\000"
+.LASF83:
+	.ascii	"ADC_InjectedChannelConfig\000"
+.LASF108:
+	.ascii	"GNU C 4.8.3 20140228 (release) [ARM/embedded-4_8-br"
+	.ascii	"anch revision 208322] -fmessage-length=0 -mtp=soft "
+	.ascii	"-mcpu=cortex-m4 -mlittle-endian -mfloat-abi=soft -m"
+	.ascii	"thumb -g2 -std=gnu99 -fno-dwarf2-cfi-asm -fno-built"
+	.ascii	"in -ffunction-sections -fdata-sections -fno-common\000"
+.LASF70:
+	.ascii	"ADC_SampleTime\000"
+.LASF67:
+	.ascii	"ADC_VBATCmd\000"
+.LASF52:
+	.ascii	"ADC_StructInit\000"
+.LASF88:
+	.ascii	"ADC_InjectedChannel\000"
+.LASF17:
+	.ascii	"FunctionalState\000"
+.LASF74:
+	.ascii	"ADC_ContinuousModeCmd\000"
+.LASF102:
+	.ascii	"ADC_GetFlagStatus\000"
+.LASF32:
+	.ascii	"ADC_TypeDef\000"
+.LASF77:
+	.ascii	"ADC_DiscModeCmd\000"
+.LASF12:
+	.ascii	"RESET\000"
+.LASF21:
+	.ascii	"JOFR2\000"
+.LASF81:
+	.ascii	"ADC_DMARequestAfterLastTransferCmd\000"
+.LASF64:
+	.ascii	"ADC_AnalogWatchdogSingleChannelConfig\000"
+.LASF98:
+	.ascii	"ADC_GetInjectedConversionValue\000"
+.LASF24:
+	.ascii	"SQR1\000"
+.LASF25:
+	.ascii	"SQR2\000"
+.LASF26:
+	.ascii	"SQR3\000"
+.LASF80:
+	.ascii	"ADC_DMACmd\000"
+.LASF53:
+	.ascii	"ADC_CommonInit\000"
+.LASF100:
+	.ascii	"ADC_IT\000"
+.LASF101:
+	.ascii	"itmask\000"
+.LASF112:
+	.ascii	"ITM_RxBuffer\000"
+.LASF18:
+	.ascii	"SMPR1\000"
+.LASF19:
+	.ascii	"SMPR2\000"
+.LASF51:
+	.ascii	"ADC_Init\000"
+.LASF73:
+	.ascii	"ADC_EOCOnEachRegularChannelCmd\000"
+.LASF38:
+	.ascii	"ADC_ExternalTrigConv\000"
+.LASF16:
+	.ascii	"ENABLE\000"
+.LASF87:
+	.ascii	"ADC_SetInjectedOffset\000"
+	.ident	"GCC: (GNU) 4.8.3 20140228 (release) [ARM/embedded-4_8-branch revision 208322]"

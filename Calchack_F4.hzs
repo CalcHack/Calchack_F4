@@ -1,0 +1,95 @@
+<!DOCTYPE CrossStudio_for_ARM_Session_File>
+<session>
+ <Bookmarks>
+  <BookmarkItem column="-1" line="1536" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="20" extra="void LINK_send_command(uint8_t command_ID, uint16_t length, uint8_t data[])" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1005" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="10" extra="GPIO_Init(LINK_WHITE_port, &amp;LINK_InitStructure);" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1012" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="11" extra="GPIO_Init(LINK_RED_port, &amp;LINK_InitStructure);" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1019" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="12" extra="GPIO_Init(GPIOD, &amp;LINK_InitStructure);" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1028" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="13" extra="while(GPIO_ReadInputDataBit(LINK_RED_port, LINK_RED_bit) &amp;&amp; GPIO_ReadInputDataBit(LINK_WHITE_port, LINK_WHITE_bit));" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1030" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="14" extra="if(!GPIO_ReadInputDataBit(LINK_RED_port, LINK_RED_bit))" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1439" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="15" extra="if (!GPIO_ReadInputDataBit(LINK_WHITE_port, LINK_WHITE_bit))" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1445" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="16" extra="LINK_WHITE_wait_until_high; // Warten, bis der TI die wei?e Leitung wieder eingeschaltet hat" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1449" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="17" extra="else if (!GPIO_ReadInputDataBit(LINK_RED_port, LINK_RED_bit))" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1455" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="18" extra="LINK_RED_wait_until_high; // Warten, bis der TI die rote Leitung auch wieder eingeschaltet hat" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1528" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="19" extra="void LINK_send_key_sequence(uint16_t key_sequence[], uint16_t length)" name="unnamed" color="5" />
+  <BookmarkItem column="-1" line="1614" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.c" number="21" extra="LINK_send_key_sequence(key_sequence, keyhits);" name="unnamed" color="5" />
+ </Bookmarks>
+ <Breakpoints>
+  <BreakpointListItem line="0" action="Stop" hardwareBreakpoint="Any" trigger="" useHWbreakpoint="true" group="Breakpoints" type="Breakpoint" state="3" counter="0" isFunctionBreakpoint="false" filename="" expression="keys" />
+ </Breakpoints>
+ <ExecutionProfileWindow/>
+ <FrameBufferWindow>
+  <FrameBufferWindow addressText="" bufferWidth="-1" bufferHeight="-1" addressSpace="" />
+ </FrameBufferWindow>
+ <Memory1>
+  <MemoryWindow autoEvaluate="0" addressText="&amp;point2" numColumns="8" sizeText="sizeof(point2)" dataSize="1" radix="16" name="Calchack_F4" addressSpace="" />
+ </Memory1>
+ <Memory2>
+  <MemoryWindow autoEvaluate="0" addressText="" numColumns="8" sizeText="" dataSize="1" radix="16" name="Calchack_F4" addressSpace="" />
+ </Memory2>
+ <Memory3>
+  <MemoryWindow autoEvaluate="0" addressText="" numColumns="8" sizeText="" dataSize="1" radix="16" name="Calchack_F4" addressSpace="" />
+ </Memory3>
+ <Memory4>
+  <MemoryWindow autoEvaluate="0" addressText="" numColumns="8" sizeText="" dataSize="1" radix="16" name="Calchack_F4" addressSpace="" />
+ </Memory4>
+ <Project>
+  <ProjectSessionItem path="Calchack_F4" name="unnamed" />
+  <ProjectSessionItem path="Calchack_F4;Calchack_F4" name="unnamed" />
+  <ProjectSessionItem path="Calchack_F4;Calchack_F4;Source Files" name="unnamed" />
+  <ProjectSessionItem path="Calchack_F4;Calchack_F4;System Files" name="unnamed" />
+ </Project>
+ <Register1>
+  <RegisterWindow openNodes="CPU - Current Context;GPIOE" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp;GPIOE/MODER;GPIOE/OTYPER;GPIOE/OSPEEDR;GPIOE/PUPDR;GPIOE/IDR;GPIOE/ODR;GPIOE/BSRR;GPIOE/LCKR;GPIOE/AFRL;GPIOE/AFRH" name="Calchack_F4" />
+ </Register1>
+ <Register2>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="Calchack_F4" />
+ </Register2>
+ <Register3>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="Calchack_F4" />
+ </Register3>
+ <Register4>
+  <RegisterWindow openNodes="CPU - Current Context" binaryNodes="" unsignedNodes="" decimalNodes="" octalNodes="" asciiNodes="" visibleNodes="CPU - Current Context/r0;CPU - Current Context/r1;CPU - Current Context/r2;CPU - Current Context/r3;CPU - Current Context/r4;CPU - Current Context/r5;CPU - Current Context/r6;CPU - Current Context/r7;CPU - Current Context/r8;CPU - Current Context/r9;CPU - Current Context/r10;CPU - Current Context/r11;CPU - Current Context/r12;CPU - Current Context/sp(r13);CPU - Current Context/lr(r14);CPU - Current Context/pc(r15);CPU - Current Context/apsr;CPU/r0;CPU/r1;CPU/r2;CPU/r3;CPU/r4;CPU/r5;CPU/r6;CPU/r7;CPU/r8;CPU/r9;CPU/r10;CPU/r11;CPU/r12;CPU/sp(r13);CPU/lr(r14);CPU/pc(r15);CPU/xpsr;CPU/msp;CPU/psp;CPU/cfbp" name="Calchack_F4" />
+ </Register4>
+ <TargetWindow programAction="" uploadFileType="" programLoadAddress="" programSize="" uploadFileName="" uploadMemoryInterface="" programFileName="" uploadStartAddress="" programFileType="" uploadSize="" programMemoryInterface="" />
+ <TraceWindow>
+  <Trace enabled="Yes" />
+ </TraceWindow>
+ <Watch1>
+  <Watches active="1" update="Twice a Second" >
+   <Watchpoint linenumber="0" radix="-1" name="curx1" expression="curx1" filename="" />
+   <Watchpoint linenumber="0" radix="-1" name="curx2" expression="curx2" filename="" />
+   <Watchpoint linenumber="0" radix="11" name="scanlineY" expression="scanlineY" filename="" />
+   <Watchpoint linenumber="0" radix="16" name="Y" expression="Y" filename="" />
+   <Watchpoint linenumber="0" radix="16" name="X" expression="X" filename="" />
+  </Watches>
+ </Watch1>
+ <Watch2>
+  <Watches active="0" update="Never" />
+ </Watch2>
+ <Watch3>
+  <Watches active="0" update="Never" />
+ </Watch3>
+ <Watch4>
+  <Watches active="0" update="Never" />
+ </Watch4>
+ <Files>
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_gpio.c" y="324" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_gpio.c" left="0" selected="0" name="unnamed" top="303" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/font5x8.h" y="5" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/font5x8.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_fsmc.c" y="0" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/stm32f4xx_fsmc.c" left="0" selected="0" name="unnamed" top="678" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Latin1" x="0" debugPath="/Users/Sean/Library/Rowley Associates Limited/CrossWorks for ARM/packages/targets/STM32/STM32_Startup.s" y="86" path="/Users/Sean/Library/Rowley Associates Limited/CrossWorks for ARM/packages/targets/STM32/STM32_Startup.s" left="0" selected="0" name="unnamed" top="65" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/os.h" y="2" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/os.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/linkport.h" y="44" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/linkport.h" left="0" selected="0" name="unnamed" top="33" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_3d.h" y="56" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_3d.h" left="0" selected="0" name="unnamed" top="26" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/linkport.cpp" y="564" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/linkport.cpp" left="0" selected="0" name="unnamed" top="820" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.cpp" y="46" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/main.cpp" left="0" selected="1" name="unnamed" top="37" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Applications/CrossWorks for ARM 3.1/gcc/arm-none-eabi/bin/ld" y="0" path="/Applications/CrossWorks for ARM 3.1/gcc/arm-none-eabi/bin/ld" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Applications/CrossWorks for ARM 3.1/source/thumb_crt0.s" y="225" path="/Applications/CrossWorks for ARM 3.1/source/thumb_crt0.s" left="0" selected="0" name="unnamed" top="204" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Library/Rowley Associates Limited/CrossWorks for ARM/v3/packages/targets/STM32/STM32_Startup.s" y="86" path="/Users/Sean/Library/Rowley Associates Limited/CrossWorks for ARM/v3/packages/targets/STM32/STM32_Startup.s" left="0" selected="0" name="unnamed" top="69" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/Calchack_F4 THUMB Debug/Calchack_F4.ld" y="0" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/Calchack_F4 THUMB Debug/Calchack_F4.ld" left="0" selected="0" name="unnamed" top="332" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_2d.h" y="42" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_2d.h" left="0" selected="0" name="unnamed" top="0" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_2d.cpp" y="273" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_2d.cpp" left="0" selected="0" name="unnamed" top="250" />
+  <SessionOpenFile useTextEdit="1" useBinaryEdit="0" codecName="Default" x="0" debugPath="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_3d.cpp" y="1121" path="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4/gfx_3d.cpp" left="0" selected="0" name="unnamed" top="51" />
+ </Files>
+ <ARMCrossStudioWindow activeProject="Calchack_F4" autoConnectTarget="ST-LINK/V2" debugSearchFileMap="" fileDialogInitialDirectory="/Users/Sean/Documents/CrossWorks Projects/Calchack_F4" fileDialogDefaultFilter="*.c;*.cpp;*.cxx;*.cc;*.h;*.hpp;*.hxx" autoConnectCapabilities="266111" debugSearchPath="" buildConfiguration="THUMB Debug" />
+</session>
