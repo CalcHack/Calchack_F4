@@ -881,7 +881,7 @@ void Camera::render(uint8_t *output)
     {   
         activepolygon = polygon_buffer[i];
 
-        float x = activepolygon.verticess[0].x * op1 + activepolygon.vertices[0].y * op2 + activepolygon.vertices[0].z * op3;
+        float x = activepolygon.vertices[0].x * op1 + activepolygon.vertices[0].y * op2 + activepolygon.vertices[0].z * op3;
         float y = activepolygon.vertices[0].x * op4 + activepolygon.vertices[0].y * op5 + activepolygon.vertices[0].z * op6;
         float z = activepolygon.vertices[0].x * op7 + activepolygon.vertices[0].y * op8 + activepolygon.vertices[0].z * op9;
         activepolygon.vertices[0].x = x - center.x;

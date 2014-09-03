@@ -881,26 +881,26 @@ void Camera::render(uint8_t *output)
     {   
         activepolygon = polygon_buffer[i];
 
-        float x = activepolygon.vt[0].x * op1 + activepolygon.vertice[0].y * op2 + activepolygon.vertice[0].z * op3;
-        float y = activepolygon.vertice[0].x * op4 + activepolygon.vertice[0].y * op5 + activepolygon.vertice[0].z * op6;
-        float z = activepolygon.vertice[0].x * op7 + activepolygon.vertice[0].y * op8 + activepolygon.vertice[0].z * op9;
-        activepolygon.vertice[0].x = x - center.x;
-        activepolygon.vertice[0].y = y - center.y;
-        activepolygon.vertice[0].z = z - center.z;
+        float x = activepolygon.verticess[0].x * op1 + activepolygon.vertices[0].y * op2 + activepolygon.vertices[0].z * op3;
+        float y = activepolygon.vertices[0].x * op4 + activepolygon.vertices[0].y * op5 + activepolygon.vertices[0].z * op6;
+        float z = activepolygon.vertices[0].x * op7 + activepolygon.vertices[0].y * op8 + activepolygon.vertices[0].z * op9;
+        activepolygon.vertices[0].x = x - center.x;
+        activepolygon.vertices[0].y = y - center.y;
+        activepolygon.vertices[0].z = z - center.z;
 
-        x = activepolygon.vertice[1].x * op1 + activepolygon.vertice[1].y * op2 + activepolygon.vertice[1].z * op3;
-        y = activepolygon.vertice[1].x * op4 + activepolygon.vertice[1].y * op5 + activepolygon.vertice[1].z * op6;
-        z = activepolygon.vertice[1].x * op7 + activepolygon.vertice[1].y * op8 + activepolygon.vertice[1].z * op9;
-        activepolygon.vertice[1].x = x - center.x;
-        activepolygon.vertice[1].y = y - center.y;
-        activepolygon.vertice[1].z = z - center.z;
+        x = activepolygon.vertices[1].x * op1 + activepolygon.vertices[1].y * op2 + activepolygon.vertices[1].z * op3;
+        y = activepolygon.vertices[1].x * op4 + activepolygon.vertices[1].y * op5 + activepolygon.vertices[1].z * op6;
+        z = activepolygon.vertices[1].x * op7 + activepolygon.vertices[1].y * op8 + activepolygon.vertices[1].z * op9;
+        activepolygon.vertices[1].x = x - center.x;
+        activepolygon.vertices[1].y = y - center.y;
+        activepolygon.vertices[1].z = z - center.z;
 
-        x = activepolygon.vertice[2].x * op1 + activepolygon.vertice[2].y * op2 + activepolygon.vertice[2].z * op3;
-        y = activepolygon.vertice[2].x * op4 + activepolygon.vertice[2].y * op5 + activepolygon.vertice[2].z * op6;
-        z = activepolygon.vertice[2].x * op7 + activepolygon.vertice[2].y * op8 + activepolygon.vertice[2].z * op9;
-        activepolygon.vertice[2].x = x - center.x;
-        activepolygon.vertice[2].y = y - center.y;
-        activepolygon.vertice[2].z = z - center.z;
+        x = activepolygon.vertices[2].x * op1 + activepolygon.vertices[2].y * op2 + activepolygon.vertices[2].z * op3;
+        y = activepolygon.vertices[2].x * op4 + activepolygon.vertices[2].y * op5 + activepolygon.vertices[2].z * op6;
+        z = activepolygon.vertices[2].x * op7 + activepolygon.vertices[2].y * op8 + activepolygon.vertices[2].z * op9;
+        activepolygon.vertices[2].x = x - center.x;
+        activepolygon.vertices[2].y = y - center.y;
+        activepolygon.vertices[2].z = z - center.z;
         
      
         drawpolygon(activepolygon, zoomlevel, framewidth, frameheight);
