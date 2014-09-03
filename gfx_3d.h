@@ -13,6 +13,12 @@ typedef struct
     float z;
 }vertice;
 
+typedef struct
+{
+    uint16_t u;
+    uint16_t v;
+}texel;
+
 typedef struct 
 {
     float x;
@@ -22,13 +28,24 @@ typedef struct
 
 typedef struct 
 {
-    uint32_t unique_ID;
-    vertice vertice1;
-    vertice vertice2;
-    vertice vertice3;
-    int16_t color;
-}polygon;
+    uint32_t unique_ID;    
+    uint8_t vertices[3];
+    texel texels[3];
+}polygon_bfr;
 
+typedef struct 
+{
+    uint32_t unique_ID; 
+    vertice vt;
+}vertice_bfr;
+
+typedef struct 
+{
+    uint32_t unique_ID; 
+    uint16_t height;
+    uint16_t width;
+    uint8_t *texture;
+}texture_bfr;
 
 
 class obj3D_Box

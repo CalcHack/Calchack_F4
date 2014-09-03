@@ -11,13 +11,18 @@ int brightness_3d = 200;
 
 uint32_t polygon_buffer_next_ID = 1;
 uint16_t polygon_buffer_next_entry = 0;
+uint16_t vertice_buffer_next_entry = 0;
+uint16_t texture_buffer_next_entry = 0;
 
 int cnt = 0;
 
 vector rotation[cubecount] = {{1,2,3}};
 
 
-polygon polygon_buffer[500];
+
+polygon_bfr polygon_buffer[500];
+vertice_bfr vertice_buffer[500];
+texture_bfr texture_buffer[5];
 
 vertice activevertice;
 
@@ -198,24 +203,87 @@ void gfx_3d_fill_triangle(vertice point1, vertice point2, vertice point3, int co
         point3.y = tempy;
     }
 
-  if (point2.y == point3.y)
-  {
-    gfx_3d_fill_BottomFlatTriangle(point1, point2, point3, color);
-  }
- 
+    if (point2.y == point3.y)
+    {
+        gfx_3d_fill_BottomFlatTriangle(point1, point2, point3, color);
+    }
 
-  else if (point1.y == point2.y)
-  {
-    gfx_3d_fill_TopFlatTriangle(point1, point2, point3, color);
-  } 
-  else
-  {
-    
-    vertice point4 = {(point1.x + ((point3.x - point1.x) / (point3.y - point1.y) * (point2.y - point1.y))), point2.y, (point1.z + ((point3.z - point1.z) / (point3.y - point1.y) * (point2.y - point1.y)))};
 
-    gfx_3d_fill_BottomFlatTriangle(point1, point2, point4, color);
-    gfx_3d_fill_TopFlatTriangle(point2, point4, point3, color);
-  }
+    else if (point1.y == point2.y)
+    {
+        gfx_3d_fill_TopFlatTriangle(point1, point2, point3, color);
+    } 
+    else
+    { 
+        vertice point4 = {(point1.x + ((point3.x - point1.x) / (point3.y - point1.y) * (point2.y - point1.y))), point2.y, (point1.z + ((point3.z - point1.z) / (point3.y - point1.y) * (point2.y - point1.y)))};
+
+        gfx_3d_fill_BottomFlatTriangle(point1, point2, point4, color);
+        gfx_3d_fill_TopFlatTriangle(point2, point4, point3, color);
+    }
+}
+
+void gfx_3d_texture_triangle(vertice point1, vertice point2, vertice point3, texture_bfr texture)
+{
+    if (point1.y < point2.y) 
+    {
+        if (point3.y < point1.y) 
+        {
+            int tempx = point1.x;
+            int tempy = point1.y;
+            point1.x = point3.x;
+            point1.y = point3.y;
+            point3.x = tempx;
+            point3.y = tempy;
+        }
+    } 
+    else 
+    {
+        if (point2.y < point3.y) 
+        {
+            int tempx = point1.x;
+            int tempy = point1.y;
+            point1.x = point2.x;
+            point1.y = point2.y;
+            point2.x = tempx;
+            point2.y = tempy;
+        }
+        else 
+        {
+            int tempx = point1.x;
+            int tempy = point1.y;
+            point1.x = point3.x;
+            point1.y = point3.y;
+            point3.x = tempx;
+            point3.y = tempy;
+        }
+    }
+    if(point3.y<point2.y) 
+    {
+        int tempx = point2.x;
+        int tempy = point2.y;
+        point2.x = point3.x;
+        point2.y = point3.y;
+        point3.x = tempx;
+        point3.y = tempy;
+    }
+
+//    if (point2.y == point3.y)
+//    {
+//        gfx_3d_fill_BottomFlatTriangle(point1, point2, point3, color);
+//    }
+//
+//
+//    else if (point1.y == point2.y)
+//    {
+//        gfx_3d_fill_TopFlatTriangle(point1, point2, point3, color);
+//    } 
+//    else
+//    { 
+//        vertice point4 = {(point1.x + ((point3.x - point1.x) / (point3.y - point1.y) * (point2.y - point1.y))), point2.y, (point1.z + ((point3.z - point1.z) / (point3.y - point1.y) * (point2.y - point1.y)))};
+//
+//        gfx_3d_fill_BottomFlatTriangle(point1, point2, point4, color);
+//        gfx_3d_fill_TopFlatTriangle(point2, point4, point3, color);
+//    }
 }
 
 // Clamping values to keep them between 0 and 1
@@ -359,12 +427,11 @@ void gfx_3d_fill_triangle(vertice point1, vertice point2, vertice point3, int co
 //    }
 //}
 
-vertice vertice_to_point(vertice vertice1)
+vertice vertice_to_point(vertice vertice[0])
 {
-  vertice point1;
-  point1.x = vertice1.x * 10000 / vertice1.z;  point1.y = vertice1.y * 10000 / vertice1.z;
-  point1.z = vertice1.z;
-  return point1;
+  vertice[0].x = vertice[0].x * 10000 / vertice[0].z;  
+  vertice[0].y = vertice[0].y * 10000 / vertice[0].z;
+  return vertice[0];
 }
 
 void BubbleSort(float a[], int b[], int array_size)
@@ -387,11 +454,18 @@ void BubbleSort(float a[], int b[], int array_size)
     }
 }   
 
-void drawpolygon(polygon polygon, float zoomlevel, int width, int height)
+void drawpolygon(polygon_bfr polygon, float zoomlevel, int width, int height)
 {
-    vertice point1 = vertice_to_point(polygon.vertice1);
-    vertice point2 = vertice_to_point(polygon.vertice2);
-    vertice point3 = vertice_to_point(polygon.vertice3);
+    uint16_t vertice_index = 0;
+    while(vertice_buffer[vertice_index].unique_ID != polygon.unique_ID)
+    {
+        vertice_index ++;
+    }
+    
+    
+    vertice point1 = vertice_to_point(vertice_buffer[vertice_index + polygon.vertices[0]].vt);
+    vertice point2 = vertice_to_point(vertice_buffer[vertice_index + polygon.vertices[1]].vt);
+    vertice point3 = vertice_to_point(vertice_buffer[vertice_index + polygon.vertices[2]].vt);
 
     point1.x = floorf(point1.x / zoomlevel + width / 2);
     point2.x = floorf(point2.x / zoomlevel + width / 2);
@@ -400,8 +474,20 @@ void drawpolygon(polygon polygon, float zoomlevel, int width, int height)
     point1.y = floorf(point1.y / zoomlevel + height / 2);
     point2.y = floorf(point2.y / zoomlevel + height / 2);
     point3.y = floorf(point3.y / zoomlevel + height / 2);
-
-    gfx_3d_fill_triangle(point1, point2, point3, polygon.color);
+    
+    if(polygon.texels[0].u==0 && polygon.texels[0].v==0 && polygon.texels[1].u==0 && polygon.texels[1].v==0 && polygon.texels[2].u==0)
+    {
+        gfx_3d_fill_triangle(point1, point2, point3, polygon.texels[2].v);
+    }
+    else
+    {
+        int texture_index = 0;
+        while(texture_buffer[texture_index].unique_ID != polygon.unique_ID)
+        {
+            texture_index ++;
+        }
+        gfx_3d_texture_triangle(point1, point2, point3, texture_buffer[texture_index]);
+    }
 }
 
     
@@ -433,6 +519,7 @@ void drawpolygon(polygon polygon, float zoomlevel, int width, int height)
 //    {{50,20,-20},{10,-20,-20},{50,-20,-20},189}};
       
 #define polyCount 12
+#define vtCount 8
 obj3D_Box::obj3D_Box()
 {
     ID = 0;
@@ -533,42 +620,31 @@ void obj3D_Box::update()
 {
     if(ID != 0)
     {
-        int i = 0;
-        while(polygon_buffer[i].unique_ID != ID)
+        int polygon_index = 0;
+        int vertice_index = 0;
+        int texture_index = 0;
+        while(polygon_buffer[polygon_index].unique_ID != ID)
         {
-            i ++;
+            polygon_index ++;
         }
-        vertice vertices[8];
-        float dimension_x = 0.5 * dimension.x;
-        float dimension_y = 0.5 * dimension.y;
-        float dimension_z = 0.5 * dimension.z;
-        float minus_dimension_x = -0.5 * dimension.x;
-        float minus_dimension_y = -0.5 * dimension.y;
-        float minus_dimension_z = -0.5 * dimension.z;
-        vertices[0].x = dimension_x;
-        vertices[0].y = minus_dimension_y;
-        vertices[0].z = dimension_z;
-        vertices[1].x = dimension_x;
-        vertices[1].y = dimension_y;
-        vertices[1].z = dimension_z;
-        vertices[2].x = minus_dimension_x;
-        vertices[2].y = dimension_y;
-        vertices[2].z = dimension_z;
-        vertices[3].x = minus_dimension_x;
-        vertices[3].y = minus_dimension_y;
-        vertices[3].z = dimension_z;
-        vertices[4].x = dimension_x;
-        vertices[4].y = minus_dimension_y;
-        vertices[4].z = minus_dimension_z;
-        vertices[5].x = dimension_x;
-        vertices[5].y = dimension_y;
-        vertices[5].z = minus_dimension_z;
-        vertices[6].x = minus_dimension_x;
-        vertices[6].y = dimension_y;
-        vertices[6].z = minus_dimension_z;
-        vertices[7].x = minus_dimension_x;
-        vertices[7].y = minus_dimension_y;
-        vertices[7].z = minus_dimension_z;
+        while(polygon_buffer[vertice_index].unique_ID != ID)
+        {
+            vertice_index ++;
+        }
+        while(polygon_buffer[texture_index].unique_ID != ID)
+        {
+            texture_index ++;
+        }
+
+        vertice vertices[vtCount] = {
+        {0.5, -0.5, 0.5},
+        {0.5, 0.5, 0.5},
+        {-0.5, 0.5, 0.5},
+        {-0.5, -0.5, 0.5},
+        {0.5, -0.5, -0.5},
+        {0.5, 0.5, -0.5},
+        {-0.5, 0.5, -0.5},
+        {-0.5, -0.5, -0.5}};
         
         //rotate & move to center pos
 
@@ -589,384 +665,144 @@ void obj3D_Box::update()
         float op8 = (cosangle_y * sinangle_x);
         float op9 = (cosangle_x * cosangle_y);
 
-        for(int i = 0; i < 8; i++)
+        for(int i = 0; i < vtCount; i++)
         {   
+            vertices[i].x *= dimension.x;
+            vertices[i].y *= dimension.y;
+            vertices[i].z *= dimension.z;
             float x = vertices[i].x * op1 + vertices[i].y * op2 + vertices[i].z * op3;
             float y = vertices[i].x * op4 + vertices[i].y * op5 + vertices[i].z * op6;
             float z = vertices[i].x * op7 + vertices[i].y * op8 + vertices[i].z * op9;
-            vertices[i].x = x + center.x;
-            vertices[i].y = y + center.y;
-            vertices[i].z = z + center.z;
+            vertice_buffer[vertice_index + i].vt.x = x + center.x;
+            vertice_buffer[vertice_index + i].vt.y = y + center.y;
+            vertice_buffer[vertice_index + i].vt.z = z + center.z;
         }
 
 
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[2];
-        polygon_buffer[i].vertice3 = vertices[1];
-        polygon_buffer[i].color = color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[2];
-        polygon_buffer[i].vertice3 = vertices[3];
-        polygon_buffer[i].color = color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[4];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[4];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[2];
-        polygon_buffer[i].color = color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[6];
-        polygon_buffer[i].color = color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[1];
-        polygon_buffer[i].color = color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[1];
-        polygon_buffer[i].vertice2 = vertices[0];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[1];
-        polygon_buffer[i].vertice2 = vertices[4];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[3];
-        polygon_buffer[i].color = color_arr[5];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = color_arr[5];
+        polygon_buffer[polygon_index].vertices[0] = 0;
+        polygon_buffer[polygon_index].vertices[1] = 2;
+        polygon_buffer[polygon_index].vertices[2] = 1;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 0;
+        polygon_buffer[polygon_index].vertices[1] = 2;
+        polygon_buffer[polygon_index].vertices[2] = 3;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 4;
+        polygon_buffer[polygon_index].vertices[1] = 6;
+        polygon_buffer[polygon_index].vertices[2] = 5;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 4;
+        polygon_buffer[polygon_index].vertices[1] = 6;
+        polygon_buffer[polygon_index].vertices[2] = 7;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 3;
+        polygon_buffer[polygon_index].vertices[1] = 6;
+        polygon_buffer[polygon_index].vertices[2] = 2;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 3;
+        polygon_buffer[polygon_index].vertices[1] = 6;
+        polygon_buffer[polygon_index].vertices[2] = 7;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 2;
+        polygon_buffer[polygon_index].vertices[1] = 5;
+        polygon_buffer[polygon_index].vertices[2] = 6;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 2;
+        polygon_buffer[polygon_index].vertices[1] = 5;
+        polygon_buffer[polygon_index].vertices[2] = 1;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 1;
+        polygon_buffer[polygon_index].vertices[1] = 0;
+        polygon_buffer[polygon_index].vertices[2] = 4;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 1;
+        polygon_buffer[polygon_index].vertices[1] = 4;
+        polygon_buffer[polygon_index].vertices[2] = 5;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 0;
+        polygon_buffer[polygon_index].vertices[1] = 7;
+        polygon_buffer[polygon_index].vertices[2] = 3;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
+        polygon_buffer[polygon_index].vertices[0] = 0;
+        polygon_buffer[polygon_index].vertices[1] = 7;
+        polygon_buffer[polygon_index].vertices[2] = 4;
+        polygon_buffer[polygon_index].texels[0].u = 0;
+        polygon_buffer[polygon_index].texels[0].v = 0;
+        polygon_buffer[polygon_index].texels[1].u = 0;
+        polygon_buffer[polygon_index].texels[1].v = 0;
+        polygon_buffer[polygon_index].texels[2].u = 0;
+        polygon_buffer[polygon_index].texels[2].v = 0;
+        polygon_index ++;
     }
 }
 
-#define polyCount 24
-obj3D_Box_colored_edge::obj3D_Box_colored_edge()
-{
-    ID = 0;
-    reset();
-}
-void obj3D_Box_colored_edge::reset()
-{
-    hide();
-    center.x = 0;
-    center.y = 0;
-    center.z = 0;
-    dimension.x = 1;
-    dimension.y = 1;
-    dimension.z = 1;
-    rotation.x = 0;
-    rotation.y = 0;
-    rotation.z = 0;
-    for(int i = 0; i < 6; i++)
-    {
-        color_arr[i] = 0;
-    }
-}
-obj3D_Box_colored_edge::~obj3D_Box_colored_edge()
-{
-    this -> hide();
-}
-void obj3D_Box_colored_edge::hide()
-{
-    if(ID != 0)
-    {
-        int i = 0;
-        while(polygon_buffer[i].unique_ID != ID)
-        {
-            i ++;
-        }
-        while(i + polyCount < polygon_buffer_next_entry)
-        {
-            polygon_buffer[i] = polygon_buffer[i + polyCount];
-            i++;
-        }
-        polygon_buffer_next_entry -= polyCount;
-        ID = 0;
-    }
-}
-void obj3D_Box_colored_edge::show()
-{
-    if(ID == 0)
-    {
-        ID = polygon_buffer_next_ID;
-        polygon_buffer_next_ID ++;
-        for(int i = polygon_buffer_next_entry; i < polygon_buffer_next_entry + polyCount; i++)
-        {
-            polygon_buffer[i].unique_ID = ID;
-        }
-        polygon_buffer_next_entry += polyCount;
-        update();
-    }
-}
-void obj3D_Box_colored_edge::rotate(vector rotate)
-{
-    rotation.x += rotate.x;
-    rotation.y += rotate.y;
-    rotation.z += rotate.z;
-}
-void obj3D_Box_colored_edge::move(vector move)
-{
-    center.x += move.x;
-    center.y += move.y;
-    center.z += move.z;
-}
-void obj3D_Box_colored_edge::scale(vector factor)
-{
-    dimension.x *= factor.x;
-    dimension.y *= factor.y;
-    dimension.z *= factor.z;
-}
-void obj3D_Box_colored_edge::resize(vector newsize)
-{
-    dimension.x = newsize.x;
-    dimension.y = newsize.y;
-    dimension.z = newsize.z;
-}
-void obj3D_Box_colored_edge::color(uint8_t newcolor)
-{
-    for(int i = 0; i < 6; i++)
-    {
-        color_arr[i] = newcolor;
-    }
-}
-void obj3D_Box_colored_edge::color(uint8_t newcolor[6])
-{
-    for(int i = 0; i < 6; i++)
-    {
-        color_arr[i] = newcolor[i];
-    }
-}
-void obj3D_Box_colored_edge::color_edge(uint8_t newcolor)
-{
-    for(int i = 0; i < 6; i++)
-    {
-        edge_color_arr[i] = newcolor;
-    }
-}
-void obj3D_Box_colored_edge::color_edge(uint8_t newcolor[6])
-{
-    for(int i = 0; i < 6; i++)
-    {
-        edge_color_arr[i] = newcolor[i];
-    }
-}
-void obj3D_Box_colored_edge::update()
-{
-    if(ID != 0)
-    {
-        int i = 0;
-        while(polygon_buffer[i].unique_ID != ID)
-        {
-            i ++;
-        }
-        vertice vertices[8];
-        float dimension_x = 0.5 * dimension.x;
-        float dimension_y = 0.5 * dimension.y;
-        float dimension_z = 0.5 * dimension.z;
-        float minus_dimension_x = -0.5 * dimension.x;
-        float minus_dimension_y = -0.5 * dimension.y;
-        float minus_dimension_z = -0.5 * dimension.z;
-        vertices[0].x = dimension_x;
-        vertices[0].y = minus_dimension_y;
-        vertices[0].z = dimension_z;
-        vertices[1].x = dimension_x;
-        vertices[1].y = dimension_y;
-        vertices[1].z = dimension_z;
-        vertices[2].x = minus_dimension_x;
-        vertices[2].y = dimension_y;
-        vertices[2].z = dimension_z;
-        vertices[3].x = minus_dimension_x;
-        vertices[3].y = minus_dimension_y;
-        vertices[3].z = dimension_z;
-        vertices[4].x = dimension_x;
-        vertices[4].y = minus_dimension_y;
-        vertices[4].z = minus_dimension_z;
-        vertices[5].x = dimension_x;
-        vertices[5].y = dimension_y;
-        vertices[5].z = minus_dimension_z;
-        vertices[6].x = minus_dimension_x;
-        vertices[6].y = dimension_y;
-        vertices[6].z = minus_dimension_z;
-        vertices[7].x = minus_dimension_x;
-        vertices[7].y = minus_dimension_y;
-        vertices[7].z = minus_dimension_z;
-        
-        //rotate & move to center pos
 
-        float sinangle_x = sin(rotation.x * 0.0174532925);
-        float cosangle_x = cos(rotation.x * 0.0174532925);
-        float sinangle_y = sin(rotation.y * 0.0174532925);
-        float cosangle_y = cos(rotation.y * 0.0174532925);
-        float sinangle_z = sin(rotation.z * 0.0174532925);
-        float cosangle_z = cos(rotation.z * 0.0174532925);
-        
-        float op1 = (cosangle_y * cosangle_z);
-        float op2 = (cosangle_z * sinangle_x * sinangle_y - cosangle_x * sinangle_z);
-        float op3 = (cosangle_x * cosangle_z * sinangle_y + sinangle_x * sinangle_z);
-        float op4 = (cosangle_y * sinangle_z);
-        float op5 = (cosangle_x * cosangle_z + sinangle_x * sinangle_y * sinangle_z);
-        float op6 = (-cosangle_z * sinangle_x + cosangle_x * sinangle_y * sinangle_z);
-        float op7 = (-sinangle_y);
-        float op8 = (cosangle_y * sinangle_x);
-        float op9 = (cosangle_x * cosangle_y);
-
-        for(int i = 0; i < 8; i++)
-        {   
-            float x = vertices[i].x * op1 + vertices[i].y * op2 + vertices[i].z * op3;
-            float y = vertices[i].x * op4 + vertices[i].y * op5 + vertices[i].z * op6;
-            float z = vertices[i].x * op7 + vertices[i].y * op8 + vertices[i].z * op9;
-            vertices[i].x = x + center.x;
-            vertices[i].y = y + center.y;
-            vertices[i].z = z + center.z;
-        }
-
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[2];
-        polygon_buffer[i].vertice3 = vertices[1];
-        polygon_buffer[i].color = color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[2];
-        polygon_buffer[i].vertice3 = vertices[3];
-        polygon_buffer[i].color = color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[4];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[4];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[2];
-        polygon_buffer[i].color = color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[6];
-        polygon_buffer[i].color = color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[1];
-        polygon_buffer[i].color = color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[1];
-        polygon_buffer[i].vertice2 = vertices[0];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[1];
-        polygon_buffer[i].vertice2 = vertices[4];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[3];
-        polygon_buffer[i].color = color_arr[5];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = color_arr[5];
-   
-
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[1];
-        polygon_buffer[i].vertice3 = vertices[1];
-        polygon_buffer[i].color = edge_color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[1];
-        polygon_buffer[i].vertice2 = vertices[2];
-        polygon_buffer[i].vertice3 = vertices[2];
-        polygon_buffer[i].color = edge_color_arr[0];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[3];
-        polygon_buffer[i].vertice3 = vertices[3];
-        polygon_buffer[i].color = edge_color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[0];
-        polygon_buffer[i].vertice3 = vertices[0];
-        polygon_buffer[i].color = edge_color_arr[1];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[4];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = edge_color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[5];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[6];
-        polygon_buffer[i].color = edge_color_arr[2];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[6];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = edge_color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[7];
-        polygon_buffer[i].vertice2 = vertices[4];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = edge_color_arr[3];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[0];
-        polygon_buffer[i].vertice2 = vertices[4];
-        polygon_buffer[i].vertice3 = vertices[4];
-        polygon_buffer[i].color = edge_color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[5];
-        polygon_buffer[i].vertice3 = vertices[5];
-        polygon_buffer[i].color = edge_color_arr[4];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[2];
-        polygon_buffer[i].vertice2 = vertices[6];
-        polygon_buffer[i].vertice3 = vertices[6];
-        polygon_buffer[i].color = edge_color_arr[5];
-        i++;
-        polygon_buffer[i].vertice1 = vertices[3];
-        polygon_buffer[i].vertice2 = vertices[7];
-        polygon_buffer[i].vertice3 = vertices[7];
-        polygon_buffer[i].color = edge_color_arr[5];
-        
-    }
-}
 
 Camera::Camera()
 {
@@ -1021,8 +857,6 @@ void Camera::render(uint8_t *output)
         }
     }
 
-    float a[polygon_buffer_next_entry];
-    int b[polygon_buffer_next_entry];
 
     float sinangle_x = sin(rotation.x * 0.0174532925);
     float cosangle_x = cos(rotation.x * 0.0174532925);
@@ -1041,32 +875,32 @@ void Camera::render(uint8_t *output)
     float op8 = (cosangle_y * sinangle_x);
     float op9 = (cosangle_x * cosangle_y);
 
-    polygon activepolygon;
+    polygon_bfr activepolygon;
     
     for(int i = 0; i < polygon_buffer_next_entry; i++)
     {   
         activepolygon = polygon_buffer[i];
 
-        float x = activepolygon.vertice1.x * op1 + activepolygon.vertice1.y * op2 + activepolygon.vertice1.z * op3;
-        float y = activepolygon.vertice1.x * op4 + activepolygon.vertice1.y * op5 + activepolygon.vertice1.z * op6;
-        float z = activepolygon.vertice1.x * op7 + activepolygon.vertice1.y * op8 + activepolygon.vertice1.z * op9;
-        activepolygon.vertice1.x = x - center.x;
-        activepolygon.vertice1.y = y - center.y;
-        activepolygon.vertice1.z = z - center.z;
+        float x = activepolygon.vt[0].x * op1 + activepolygon.vertice[0].y * op2 + activepolygon.vertice[0].z * op3;
+        float y = activepolygon.vertice[0].x * op4 + activepolygon.vertice[0].y * op5 + activepolygon.vertice[0].z * op6;
+        float z = activepolygon.vertice[0].x * op7 + activepolygon.vertice[0].y * op8 + activepolygon.vertice[0].z * op9;
+        activepolygon.vertice[0].x = x - center.x;
+        activepolygon.vertice[0].y = y - center.y;
+        activepolygon.vertice[0].z = z - center.z;
 
-        x = activepolygon.vertice2.x * op1 + activepolygon.vertice2.y * op2 + activepolygon.vertice2.z * op3;
-        y = activepolygon.vertice2.x * op4 + activepolygon.vertice2.y * op5 + activepolygon.vertice2.z * op6;
-        z = activepolygon.vertice2.x * op7 + activepolygon.vertice2.y * op8 + activepolygon.vertice2.z * op9;
-        activepolygon.vertice2.x = x - center.x;
-        activepolygon.vertice2.y = y - center.y;
-        activepolygon.vertice2.z = z - center.z;
+        x = activepolygon.vertice[1].x * op1 + activepolygon.vertice[1].y * op2 + activepolygon.vertice[1].z * op3;
+        y = activepolygon.vertice[1].x * op4 + activepolygon.vertice[1].y * op5 + activepolygon.vertice[1].z * op6;
+        z = activepolygon.vertice[1].x * op7 + activepolygon.vertice[1].y * op8 + activepolygon.vertice[1].z * op9;
+        activepolygon.vertice[1].x = x - center.x;
+        activepolygon.vertice[1].y = y - center.y;
+        activepolygon.vertice[1].z = z - center.z;
 
-        x = activepolygon.vertice3.x * op1 + activepolygon.vertice3.y * op2 + activepolygon.vertice3.z * op3;
-        y = activepolygon.vertice3.x * op4 + activepolygon.vertice3.y * op5 + activepolygon.vertice3.z * op6;
-        z = activepolygon.vertice3.x * op7 + activepolygon.vertice3.y * op8 + activepolygon.vertice3.z * op9;
-        activepolygon.vertice3.x = x - center.x;
-        activepolygon.vertice3.y = y - center.y;
-        activepolygon.vertice3.z = z - center.z;
+        x = activepolygon.vertice[2].x * op1 + activepolygon.vertice[2].y * op2 + activepolygon.vertice[2].z * op3;
+        y = activepolygon.vertice[2].x * op4 + activepolygon.vertice[2].y * op5 + activepolygon.vertice[2].z * op6;
+        z = activepolygon.vertice[2].x * op7 + activepolygon.vertice[2].y * op8 + activepolygon.vertice[2].z * op9;
+        activepolygon.vertice[2].x = x - center.x;
+        activepolygon.vertice[2].y = y - center.y;
+        activepolygon.vertice[2].z = z - center.z;
         
      
         drawpolygon(activepolygon, zoomlevel, framewidth, frameheight);
@@ -1092,9 +926,9 @@ void gfx3dperiodic()
 {
     //clear zbuffer
 
-    if(cnt == 0)
+    if(keys == key_enter)
     {
-        cnt = 1000;
+        
         for(int i = 0; i < cubecount; i++)
         {
              rotation[i].x = rand() % 10;
@@ -1113,18 +947,7 @@ void gfx3dperiodic()
 
         }
     }
-    cube[0].center.x = -150;
-    cube[0].center.y = 100;
-    cube[1].center.x = 150;
-    cube[1].center.y = 120;
-    cube[2].center.x = 130;
-    cube[2].center.y = 50;
-    cube[3].center.x = 0;
-    cube[3].center.y = 0;
-    cube[4].center.x = 10;
-    cube[4].center.y = -90;
-    cube[5].center.x = -50;
-    cube[5].center.y = -50;
+    
 
     for(int i = 0; i < cubecount; i++)
     {
